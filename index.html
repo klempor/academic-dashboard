@@ -11,6 +11,8 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- LZ-String Compression Library for URL State Sync -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Font Heebo -->
@@ -85,9 +87,9 @@
 
     <!-- TOP NAVIGATION / HEADER -->
     <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 p-1.5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-3 min-w-0">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 p-1.5 shrink-0">
                     <svg viewBox="0 0 512 512" class="w-full h-full fill-current">
                         <path d="M256 115 L420 195 L256 275 L92 195 Z" fill="#ffffff"/>
                         <path d="M156 240 V335 C156 375 356 375 356 335 V240 L256 290 Z" fill="#e0f2fe"/>
@@ -95,21 +97,28 @@
                         <circle cx="392" cy="350" r="18" fill="#fbbf24"/>
                     </svg>
                 </div>
-                <div>
+                <div class="min-w-0">
                     <div class="flex items-center gap-2">
-                        <h1 class="text-lg font-extrabold text-white leading-tight">Academic Dashboard</h1>
-                        <span id="appVersionBadge" class="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800/90 text-brand-400 border border-slate-700/80 shadow-sm" title="גרסת מערכת נוכחית (major.minor.micro)">v2.0.0</span>
+                        <h1 class="text-base sm:text-lg font-extrabold text-white leading-tight truncate">Academic Dashboard</h1>
+                        <span id="appVersionBadge" class="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800/90 text-brand-400 border border-slate-700/80 shadow-sm shrink-0" title="גרסת מערכת נוכחית (major.minor.micro)">v2.1.0</span>
                     </div>
-                    <p class="text-xs text-slate-400">מעקב לימודים, מטלות ומועדים בסמסטר 2027א'</p>
+                    <p class="text-xs text-slate-400 hidden sm:block">מעקב לימודים, מטלות ומועדים בסמסטר 2027א'</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- CROSS-DEVICE SYNC LINK BUTTON -->
+                <button onclick="copySyncLink()" class="px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 text-xs font-bold transition-all border border-emerald-500/40 flex items-center gap-1.5" title="העתק קישור דחוס לסנכרון המצב במכשיר אחר">
+                    <i class="fa-solid fa-link"></i>
+                    <span class="hidden md:inline">העתקת לינק לסנכרון</span>
+                    <span class="md:hidden">סנכרון</span>
+                </button>
+
                 <!-- PERSONALIZATION / COLOR SCHEME DROPDOWN BUTTON -->
                 <div class="relative">
-                    <button onclick="toggleThemeDropdown(event)" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700 flex items-center gap-1.5">
+                    <button onclick="toggleThemeDropdown(event)" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700 flex items-center gap-1.5" title="התאמה אישית">
                         <i class="fa-solid fa-palette text-amber-400"></i>
-                        <span>התאמה אישית</span>
+                        <span class="hidden lg:inline">התאמה אישית</span>
                         <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 mr-0.5"></i>
                     </button>
                     <!-- DROPDOWN MENU -->
@@ -124,14 +133,14 @@
                     </div>
                 </div>
 
-                <button onclick="openCourseModal('manage')" class="px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
+                <button onclick="openCourseModal('manage')" class="px-3 sm:px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
                     <i class="fa-solid fa-list-check"></i>
                     <span>ניהול קורסים</span>
                 </button>
 
-                <button onclick="openJsonModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all border border-slate-700 flex items-center gap-1.5" title="גיבוי ויבוא JSON">
+                <button onclick="openJsonModal()" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all border border-slate-700 flex items-center gap-1.5" title="גיבוי ויבוא JSON">
                     <i class="fa-solid fa-code"></i>
-                    <span class="hidden sm:inline">גיבוי/יבוא</span>
+                    <span class="hidden lg:inline">גיבוי/יבוא</span>
                 </button>
             </div>
         </div>
@@ -805,15 +814,15 @@
     </div>
 
     <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed bottom-5 left-5 z-50 bg-brand-600 text-white px-4 py-2.5 rounded-xl shadow-xl font-bold text-xs flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-        <i class="fa-solid fa-circle-check"></i>
+    <div id="toast" class="fixed bottom-5 left-5 z-50 bg-brand-600 text-white px-4 py-2.5 rounded-xl shadow-xl font-bold text-xs flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none max-w-md">
+        <i class="fa-solid fa-circle-check shrink-0"></i>
         <span id="toastMessage">נשמר בהצלחה</span>
     </div>
 
     <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
         // --- SYSTEM VERSION ---
-        const APP_VERSION = "2.0.0"; // Format: major.minor.micro
+        const APP_VERSION = "2.1.0"; // Format: major.minor.micro
 
         // --- CONSTANTS & SEMESTER WEEKS ---
         const SEMESTER_WEEKS = [
@@ -1428,6 +1437,85 @@
             weeklyTasksCollapsed: true,
             activeThemeId: 'slate'
         };
+
+        // --- CROSS-DEVICE URL HASH SYNC LOGIC ---
+        function copySyncLink() {
+            if (typeof LZString === 'undefined') {
+                showToast('שגיאה: ספריית הדחיסה טרם נטענה, נסה שוב בעוד רגע');
+                return;
+            }
+
+            try {
+                const payload = {
+                    courses: appState.courses,
+                    theme: appState.activeThemeId
+                };
+                const jsonStr = JSON.stringify(payload);
+                const compressed = LZString.compressToEncodedURIComponent(jsonStr);
+                const baseUrl = window.location.href.split('#')[0];
+                const syncUrl = `${baseUrl}#sync=${compressed}`;
+
+                const onCopySuccess = () => {
+                    showToast('הלינק לסנכרון הועתק ללוח! פתח את הלינק במכשיר היעד כדי לסנכרן את הנתונים.', 5500);
+                };
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(syncUrl).then(onCopySuccess).catch(() => {
+                        fallbackCopyText(syncUrl, onCopySuccess);
+                    });
+                } else {
+                    fallbackCopyText(syncUrl, onCopySuccess);
+                }
+            } catch (e) {
+                showToast('שגיאה ביצירת לינק הסנכרון: ' + e.message);
+            }
+        }
+
+        function fallbackCopyText(text, callback) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (callback) callback();
+        }
+
+        function checkAndLoadSyncHash() {
+            const hash = window.location.hash;
+            if (!hash || !hash.startsWith('#sync=')) return false;
+
+            if (typeof LZString === 'undefined') return false;
+
+            try {
+                const encoded = hash.slice('#sync='.length);
+                const decompressed = LZString.decompressFromEncodedURIComponent(encoded);
+                if (!decompressed) return false;
+
+                const parsed = JSON.parse(decompressed);
+                if (parsed && Array.isArray(parsed.courses)) {
+                    localStorage.setItem('academic_dashboard_state', JSON.stringify({
+                        courses: parsed.courses
+                    }));
+                    if (parsed.theme) {
+                        localStorage.setItem('academic_dashboard_theme', parsed.theme);
+                    }
+
+                    // Clean hash from URL so future refreshes won't overwrite new progress
+                    try {
+                        history.replaceState(null, '', window.location.pathname + window.location.search);
+                    } catch (histErr) {
+                        window.location.hash = '';
+                    }
+                    return true;
+                }
+            } catch (e) {
+                console.error('Failed to parse sync link:', e);
+            }
+            return false;
+        }
 
         // --- THEME CUSTOMIZATION LOGIC ---
         function applyTheme(themeId) {
@@ -2836,24 +2924,30 @@
             }
         }
 
-        function showToast(msg) {
+        let toastTimer = null;
+        function showToast(msg, duration = 3000) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMessage').textContent = msg;
             toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => {
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
                 toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
+            }, duration);
         }
 
         // ENTRY POINT
         window.onload = function() {
             const versionBadge = document.getElementById('appVersionBadge');
             if (versionBadge) versionBadge.textContent = `v${APP_VERSION}`;
+            const syncedFromUrl = checkAndLoadSyncHash();
             loadSavedState();
             const currentWeekIdx = getActualCalendarWeekIndex();
             appState.currentWeekIndex = currentWeekIdx;
             appState.courseModalWeekIndex = currentWeekIdx;
             renderAllViews();
+            if (syncedFromUrl) {
+                showToast('מצב המערכת סונכרן בהצלחה מהקישור!', 4500);
+            }
         };
     </script>
 </body>
