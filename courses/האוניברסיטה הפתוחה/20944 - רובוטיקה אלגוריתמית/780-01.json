@@ -1,0 +1,146 @@
+{
+  "id": "c_robotics",
+  "name": "רובוטיקה אלגוריתמית",
+  "code": "20944",
+  "instructor": "זיו הופרט",
+  "time": "ימי ב', 19:00 – 21:00",
+  "color": "#f59e0b",
+  "minRequiredPoints": 10,
+  "links": [
+    {
+      "id": "l4",
+      "title": "אתר הקורס",
+      "url": "https://opal.openu.ac.il/course/view.php?id=55467",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u30",
+      "title": "יחידה 1: מרחב הקונפיגורציות",
+      "startWeek": 2,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u31",
+      "title": "יחידה 2: תנועה של גוף קשיח",
+      "startWeek": 5,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u32",
+      "title": "יחידה 3: קינמטיקה ישרה",
+      "startWeek": 8,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u33",
+      "title": "יחידה 4: היעקוביאן",
+      "startWeek": 10,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u34",
+      "title": "יחידה 5: קינמטיקה הפוכה",
+      "startWeek": 13,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m40",
+      "title": "מפגש 01",
+      "date": "2026-11-02",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m41",
+      "title": "מפגש 02",
+      "date": "2026-11-09",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m42",
+      "title": "מפגש 03",
+      "date": "2026-11-23",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m43",
+      "title": "מפגש 04",
+      "date": "2026-12-07",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m44",
+      "title": "מפגש 05",
+      "date": "2026-12-21",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m45",
+      "title": "מפגש 06",
+      "date": "2027-01-04",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m46",
+      "title": "מפגש 07",
+      "date": "2027-01-18",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m47",
+      "title": "מפגש 08",
+      "date": "2027-01-25",
+      "time": "19:00",
+      "endTime": "21:00",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a30",
+      "title": "ממ\"ן 11 (מטלה 01)",
+      "date": "2026-12-04",
+      "points": 5,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a31",
+      "title": "ממ\"ן 12 (מטלה 02)",
+      "date": "2027-01-01",
+      "points": 5,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a32",
+      "title": "ממ\"ן 13 (מטלה 03)",
+      "date": "2027-01-29",
+      "points": 5,
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

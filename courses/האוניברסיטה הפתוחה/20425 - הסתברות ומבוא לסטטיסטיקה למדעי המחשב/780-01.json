@@ -1,0 +1,238 @@
+{
+  "id": "c_stat",
+  "name": "הסתברות ומבוא לסטטיסטיקה למדעי המחשב",
+  "code": "20425",
+  "instructor": "ד\"ר ענת קופזון",
+  "time": "ימי ד', 16:45 – 18:45",
+  "color": "#3b82f6",
+  "minRequiredPoints": 10,
+  "links": [
+    {
+      "id": "l_stat_1",
+      "title": "אתר הקורס",
+      "url": "https://opal.openu.ac.il/course/view.php?id=55298",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u_stat_1",
+      "title": "קומבינטוריקה (פרק 1)",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u_stat_2",
+      "title": "אקסיומות ההסתברות (פרק 2)",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u_stat_3",
+      "title": "הסתברות מותנית ואי-תלות (פרק 3)",
+      "startWeek": 3,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u_stat_4",
+      "title": "משתנים מקריים בדידים (פרק 4)",
+      "startWeek": 5,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u_stat_5",
+      "title": "משתנים מקריים רציפים (פרק 5)",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u_stat_6",
+      "title": "התפלגות משותפת של משתנים מקריים (פרק 6)",
+      "startWeek": 8,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u_stat_7",
+      "title": "תכונות של תוחלת (פרק 7)",
+      "startWeek": 10,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u_stat_8",
+      "title": "משפטי גבול (פרק 8)",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u_stat_9",
+      "title": "מבוא להסקה סטטיסטית (פרק 9)",
+      "startWeek": 13,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m_stat_1",
+      "title": "מפגש 01",
+      "date": "2026-11-04",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_2",
+      "title": "מפגש 02",
+      "date": "2026-11-11",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_3",
+      "title": "מפגש 03",
+      "date": "2026-11-18",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_4",
+      "title": "מפגש 04",
+      "date": "2026-11-25",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_5",
+      "title": "מפגש 05",
+      "date": "2026-12-02",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_6",
+      "title": "מפגש 06",
+      "date": "2026-12-09",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_7",
+      "title": "מפגש 07",
+      "date": "2026-12-16",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_8",
+      "title": "מפגש 08",
+      "date": "2026-12-23",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_9",
+      "title": "מפגש 09",
+      "date": "2026-12-30",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_10",
+      "title": "מפגש 10",
+      "date": "2027-01-06",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_11",
+      "title": "מפגש 11",
+      "date": "2027-01-20",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    },
+    {
+      "id": "m_stat_12",
+      "title": "מפגש 12",
+      "date": "2027-01-27",
+      "time": "16:45",
+      "endTime": "18:45",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a_stat_1",
+      "title": "מטלה 01",
+      "date": "2026-11-15",
+      "points": 2,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_2",
+      "title": "מטלה 02",
+      "date": "2026-11-22",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_3",
+      "title": "מטלה 03",
+      "date": "2026-12-06",
+      "points": 2,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_4",
+      "title": "מטלה 04",
+      "date": "2026-12-20",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_5",
+      "title": "מטלה 05",
+      "date": "2027-01-03",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_6",
+      "title": "מטלה 06",
+      "date": "2027-01-17",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_stat_7",
+      "title": "מטלה 07",
+      "date": "2027-01-31",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

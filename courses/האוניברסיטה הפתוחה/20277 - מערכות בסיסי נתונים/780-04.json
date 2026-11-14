@@ -1,0 +1,196 @@
+{
+  "id": "c_db",
+  "name": "מערכות בסיסי נתונים",
+  "code": "20277",
+  "instructor": "רועי רחמני",
+  "time": "ימי א', 15:00 – 18:00",
+  "color": "#10b981",
+  "minRequiredPoints": 10,
+  "links": [
+    {
+      "id": "l3",
+      "title": "אתר הקורס",
+      "url": "https://opal.openu.ac.il/course/view.php?id=55390",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u20",
+      "title": "פרק 1: מבוא",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u21",
+      "title": "פרק 2: מודל היחסים",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u22",
+      "title": "פרק 3: מבוא לשפת SQL",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u23",
+      "title": "פרק 4: SQL - רמת ביניים",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u24",
+      "title": "פרק 5: SQL מתקדם",
+      "startWeek": 5,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u25",
+      "title": "פרק 6: מודל ישויות-קשרים",
+      "startWeek": 7,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u26",
+      "title": "פרק 7: תיכון במודל היחסים",
+      "startWeek": 9,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u27",
+      "title": "פרק 8: טיפוסי נתונים מורכבים",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u28",
+      "title": "פרק 9: אחסון ומבני קבצים",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u29",
+      "title": "פרק 10: אינדקסים",
+      "startWeek": 12,
+      "endWeek": 13,
+      "completed": false
+    },
+    {
+      "id": "u30",
+      "title": "פרק 11: עיבוד שאילתות",
+      "startWeek": 14,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m30",
+      "title": "מפגש 01",
+      "date": "2026-11-01",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m31",
+      "title": "מפגש 02",
+      "date": "2026-11-15",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m32",
+      "title": "מפגש 03",
+      "date": "2026-11-29",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m33",
+      "title": "מפגש 04",
+      "date": "2026-12-13",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m34",
+      "title": "מפגש 05",
+      "date": "2026-12-27",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m35",
+      "title": "מפגש 06",
+      "date": "2027-01-10",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    },
+    {
+      "id": "m36",
+      "title": "מפגש 07",
+      "date": "2027-01-24",
+      "time": "15:00",
+      "endTime": "18:00",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a20",
+      "title": "ממ\"ן 01",
+      "date": "2026-11-13",
+      "points": 2,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a21",
+      "title": "ממ\"ן 02",
+      "date": "2026-12-04",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a22",
+      "title": "ממ\"ן 03",
+      "date": "2027-01-01",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a23",
+      "title": "ממ\"ן 04",
+      "date": "2027-01-15",
+      "points": 2,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a24",
+      "title": "ממ\"ן 05",
+      "date": "2027-01-31",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

@@ -1,0 +1,2860 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Dashboard - לוח בקרה אקדמי</title>
+
+    <!-- Custom Academic SVG Favicon & Desktop Shortcut Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%230ea5e9'/><stop offset='50%' stop-color='%236366f1'/><stop offset='100%' stop-color='%238b5cf6'/></linearGradient></defs><rect width='512' height='512' rx='120' fill='url(%23g)'/><path d='M256 115 L420 195 L256 275 L92 195 Z' fill='%23ffffff'/><path d='M156 240 V335 C156 375 356 375 356 335 V240 L256 290 Z' fill='%23e0f2fe'/><path d='M392 210 V325' stroke='%23fbbf24' stroke-width='20' stroke-linecap='round'/><circle cx='392' cy='350' r='16' fill='%23fbbf24'/><path d='M200 410 C236 425 276 425 312 410' stroke='%23ffffff' stroke-width='16' stroke-linecap='round' fill='none' opacity='0.8'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%230ea5e9'/><stop offset='50%' stop-color='%236366f1'/><stop offset='100%' stop-color='%238b5cf6'/></linearGradient></defs><rect width='512' height='512' rx='120' fill='url(%23g)'/><path d='M256 115 L420 195 L256 275 L92 195 Z' fill='%23ffffff'/><path d='M156 240 V335 C156 375 356 375 356 335 V240 L256 290 Z' fill='%23e0f2fe'/><path d='M392 210 V325' stroke='%23fbbf24' stroke-width='20' stroke-linecap='round'/><circle cx='392' cy='350' r='16' fill='%23fbbf24'/><path d='M200 410 C236 425 276 425 312 410' stroke='%23ffffff' stroke-width='16' stroke-linecap='round' fill='none' opacity='0.8'/></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--theme-bg-body, #0f172a);
+            color: #f8fafc;
+            transition: background-color 0.3s ease;
+        }
+        header {
+            background-color: var(--theme-bg-header, rgba(15, 23, 42, 0.9)) !important;
+            transition: background-color 0.3s ease;
+        }
+        .glass-card {
+            background: var(--theme-bg-card, rgba(30, 41, 59, 0.7)) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--theme-border, rgba(255, 255, 255, 0.08)) !important;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: var(--theme-border-hover, rgba(255, 255, 255, 0.18)) !important;
+        }
+        .day-column-today {
+            background: var(--theme-today-bg, rgba(14, 165, 233, 0.08)) !important;
+            border-color: var(--theme-today-border, rgba(14, 165, 233, 0.4)) !important;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12 text-slate-200">
+
+    <!-- TOP NAVIGATION / HEADER -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 p-1.5">
+                    <svg viewBox="0 0 512 512" class="w-full h-full fill-current">
+                        <path d="M256 115 L420 195 L256 275 L92 195 Z" fill="#ffffff"/>
+                        <path d="M156 240 V335 C156 375 356 375 356 335 V240 L256 290 Z" fill="#e0f2fe"/>
+                        <path d="M392 210 V325" stroke="#fbbf24" stroke-width="24" stroke-linecap="round"/>
+                        <circle cx="392" cy="350" r="18" fill="#fbbf24"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-lg font-extrabold text-white leading-tight">Academic Dashboard</h1>
+                        <span id="appVersionBadge" class="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800/90 text-brand-400 border border-slate-700/80 shadow-sm" title="גרסת מערכת נוכחית (major.minor.micro)">v2.0.0</span>
+                    </div>
+                    <p class="text-xs text-slate-400">מעקב לימודים, מטלות ומועדים בסמסטר 2027א'</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- PERSONALIZATION / COLOR SCHEME DROPDOWN BUTTON -->
+                <div class="relative">
+                    <button onclick="toggleThemeDropdown(event)" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all border border-slate-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-palette text-amber-400"></i>
+                        <span>התאמה אישית</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 mr-0.5"></i>
+                    </button>
+                    <!-- DROPDOWN MENU -->
+                    <div id="themeDropdownMenu" class="absolute left-0 mt-2 w-64 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl p-2 hidden z-50 space-y-1">
+                        <div class="px-2 py-1 text-[10px] font-extrabold text-slate-400 border-b border-slate-800 mb-1 flex items-center justify-between">
+                            <span>בחר ערכת נושא (Color Scheme)</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                        </div>
+                        <div id="themeOptionsList" class="space-y-1">
+                            <!-- Rendered dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="openCourseModal('manage')" class="px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>ניהול קורסים</span>
+                </button>
+
+                <button onclick="openJsonModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all border border-slate-700 flex items-center gap-1.5" title="גיבוי ויבוא JSON">
+                    <i class="fa-solid fa-code"></i>
+                    <span class="hidden sm:inline">גיבוי/יבוא</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-6">
+
+        <!-- WELCOME / ONBOARDING SCREEN (SHOWN WHEN NO COURSES EXIST) -->
+        <section id="welcomeOnboardingSection" class="hidden glass-card rounded-3xl p-6 sm:p-10 text-center max-w-3xl mx-auto my-6 border border-slate-700/80 shadow-2xl space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 mx-auto p-3">
+                <svg viewBox="0 0 512 512" class="w-full h-full fill-current">
+                    <path d="M256 115 L420 195 L256 275 L92 195 Z" fill="#ffffff"/>
+                    <path d="M156 240 V335 C156 375 356 375 356 335 V240 L256 290 Z" fill="#e0f2fe"/>
+                    <path d="M392 210 V325" stroke="#fbbf24" stroke-width="24" stroke-linecap="round"/>
+                    <circle cx="392" cy="350" r="18" fill="#fbbf24"/>
+                </svg>
+            </div>
+
+            <div class="space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-black text-white">ברוכים הבאים ל-Academic Dashboard! 🎓</h2>
+                <p class="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+                    המקום המרכזי לניהול הסמסטר שלך: מעקב חכם אחרי יחידות לימוד וקצב התקדמות, לו"ז שבועי מאוחד לכל הקורסים, תזכורות למטלות ומועדים, וחישוב ציונים.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-right">
+                <button onclick="openCourseModal('form')" class="p-4 rounded-2xl bg-brand-600/20 hover:bg-brand-600/30 border border-brand-500/40 transition-all flex items-start gap-3.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center text-base shrink-0 shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-extrabold text-white">הוספת קורס חדש</h3>
+                        <p class="text-xs text-slate-400 mt-1">הגדר קורס חדש בקלות דרך טופס ידידותי והוסף לו מפגשים, יחידות ומטלות.</p>
+                    </div>
+                </button>
+
+                <button onclick="openCourseModal('json')" class="p-4 rounded-2xl bg-emerald-600/15 hover:bg-emerald-600/25 border border-emerald-500/40 transition-all flex items-start gap-3.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-base shrink-0 shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-file-import"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-extrabold text-white">טעינת קורס מקובץ JSON</h3>
+                        <p class="text-xs text-slate-400 mt-1">קיבלת קובץ הגדרת קורס מוכן מחבר לספסל הלימודים? טען אותו כאן בשנייה.</p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+                <span>רוצה רק להתרשם מאיך שהמערכת נראית עם נתונים?</span>
+                <button onclick="loadDemoCourses()" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold border border-slate-700 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                    <span>טען קורסים לדוגמה</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ACTIVE DASHBOARD CONTENT (SHOWN WHEN AT LEAST ONE COURSE EXISTS) -->
+        <div id="activeDashboardContent" class="space-y-6">
+
+        <!-- TOP STATS OVERVIEW -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Active Courses -->
+            <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-slate-400 block">קורסים פעילים</span>
+                    <span id="statActiveCourses" class="text-2xl font-black text-white">0</span>
+                </div>
+            </div>
+
+            <!-- Next Meeting (Enlarged, Multi-line) -->
+            <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <span class="text-xs font-semibold text-slate-400 block">המפגש הקרוב</span>
+                    <h4 id="statNextMeetingTitle" class="text-xs font-extrabold text-white mt-0.5 break-words leading-tight">טוען...</h4>
+                    <p id="statNextMeetingSub" class="text-[11px] font-medium text-amber-400/90 mt-1">--</p>
+                </div>
+            </div>
+
+            <!-- Next Assignment (Enlarged, Multi-line) -->
+            <div class="glass-card rounded-2xl p-4 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 text-xl flex-shrink-0">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <span class="text-xs font-semibold text-slate-400 block">המטלה הקרובה</span>
+                    <h4 id="statNextAssignmentTitle" class="text-xs font-extrabold text-white mt-0.5 break-words leading-tight">טוען...</h4>
+                    <p id="statNextAssignmentSub" class="text-[11px] font-medium text-rose-400/90 mt-1">--</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLLAPSIBLE WEEKLY TASKS SECTION -->
+        <section id="weeklyTasksSection" class="glass-card rounded-2xl border-slate-800 overflow-hidden transition-all">
+            <button type="button" onclick="toggleWeeklyTasksCollapse()" class="w-full p-4 flex items-center justify-between text-right hover:bg-slate-800/40 transition-colors gap-3">
+                <div class="flex items-center gap-3.5 min-w-0">
+                    <div id="weeklyTasksIconBox" class="w-11 h-11 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-lg shrink-0 transition-colors">
+                        <i id="weeklyTasksHeaderIcon" class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h2 class="text-sm sm:text-base font-extrabold text-white">המשימות שלך לשבוע הקרוב</h2>
+                            <span id="weeklyTasksLagBadge" class="hidden px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1 animate-pulse">
+                                <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
+                                <span>נדרשת השלמת פערים</span>
+                            </span>
+                        </div>
+                        <p id="weeklyTasksSubtitle" class="text-xs text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
+                            <span>מחשב משימות...</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <span id="weeklyTasksFoldLabel" class="hidden sm:inline text-[11px] font-bold text-slate-400">הצג פירוט</span>
+                    <div class="w-8 h-8 rounded-lg bg-slate-800/90 border border-slate-700 flex items-center justify-center text-slate-300">
+                        <i id="weeklyTasksChevron" class="fa-solid fa-chevron-down transition-transform duration-300 text-xs"></i>
+                    </div>
+                </div>
+            </button>
+
+            <div id="weeklyTasksDetails" class="p-4 pt-2 border-t border-slate-800/80 space-y-4 hidden bg-slate-950/30">
+                <!-- SECTION 1 (TYPE 3): LAGGING UNITS -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between border-b border-rose-900/40 pb-1.5">
+                        <h3 class="text-xs font-extrabold text-rose-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>יחידות לימוד בפיגור בקצב (להשלמה מיידית)</span>
+                        </h3>
+                        <span id="tasksSectionLagCount" class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800/60">0</span>
+                    </div>
+                    <div id="tasksListLagUnits" class="space-y-1.5">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- SECTION 2 (TYPE 2): UPCOMING ASSIGNMENTS (WITHIN 7 DAYS) -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between border-b border-amber-900/40 pb-1.5">
+                        <h3 class="text-xs font-extrabold text-amber-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                            <span>מטלות להגשה בשבוע הקרוב (טווח 7 ימים)</span>
+                        </h3>
+                        <span id="tasksSectionAssignmentsCount" class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/60">0</span>
+                    </div>
+                    <div id="tasksListUpcomingAssignments" class="space-y-1.5">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- SECTION 3 (TYPE 1): UNITS ENDING THIS WEEK -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between border-b border-brand-900/40 pb-1.5">
+                        <h3 class="text-xs font-extrabold text-brand-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                            <span>יחידות לימוד לסיום השבוע</span>
+                        </h3>
+                        <span id="tasksSectionEndingUnitsCount" class="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-950/80 text-brand-300 border border-brand-800/60">0</span>
+                    </div>
+                    <div id="tasksListEndingUnits" class="space-y-1.5">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIFIED WEEKLY SCHEDULE GRID -->
+        <section class="glass-card rounded-2xl p-4 sm:p-5 space-y-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-base font-extrabold text-white flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-days text-brand-400"></i>
+                        <span>לו"ז שבועי מאוחד לכל הקורסים</span>
+                    </h2>
+                    <p id="weekDateRangeSubtitle" class="text-xs text-slate-400 mt-0.5">טוען תאריכים...</p>
+                </div>
+
+                <!-- WEEK SELECTOR CONTROLS -->
+                <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+                    <button onclick="changeWeek(-1)" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                    <select id="weekSelectDropdown" onchange="onWeekDropdownChange(this.value)" class="bg-slate-800 border border-slate-700 text-slate-200 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-brand-500 font-bold">
+                        <!-- Options generated dynamically -->
+                    </select>
+
+                    <button onclick="changeWeek(1)" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <button onclick="goToCurrentWeek()" class="px-3 py-1.5 rounded-lg bg-brand-600/20 text-brand-400 hover:bg-brand-600/30 text-xs font-bold border border-brand-500/30 transition-colors">
+                        השבוע הנוכחי
+                    </button>
+                </div>
+            </div>
+
+            <!-- 7-DAY GRID -->
+            <div id="weeklyDayGrid" class="grid grid-cols-7 gap-2 min-w-[700px] overflow-x-auto">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- COURSE CARDS GRID (QUICKVIEW) -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-extrabold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-brand-400"></i>
+                    <span>הקורסים שלי</span>
+                </h2>
+                <button onclick="openCourseModal('form')" class="text-xs font-bold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>הוסף קורס</span>
+                </button>
+            </div>
+
+            <div id="courseCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Dynamic Course Cards -->
+            </div>
+        </section>
+
+        </div>
+
+    </main>
+
+    <!-- DEDICATED COURSE DASHBOARD MODAL -->
+    <div id="courseModalContainer" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+            
+            <!-- MODAL HEADER & OVERVIEW -->
+            <div class="p-4 sm:p-5 border-b border-slate-800 bg-slate-900/90 relative">
+                <button onclick="closeCourseDashboardModal()" class="absolute top-4 left-4 w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+
+                <div class="flex items-center gap-3 mb-3">
+                    <div id="cdashCourseBadge" class="w-3.5 h-10 rounded-full"></div>
+                    <div>
+                        <h2 id="cdashCourseName" class="text-lg font-extrabold text-white leading-tight">שם הקורס</h2>
+                        <div class="flex items-center gap-3 text-xs text-slate-400 mt-1">
+                            <span id="cdashCourseInstructor"><i class="fa-solid fa-user-tie ml-1"></i> מנחה</span>
+                            <span id="cdashCourseTime"><i class="fa-regular fa-clock ml-1"></i> זמנים</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OVERVIEW STATS CARDS INSIDE COURSE MODAL -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+                    
+                    <!-- 1. UNIFIED UNIT BOX -->
+                    <div id="cdashUnifiedUnitBox" class="p-3 rounded-xl border flex flex-col justify-between bg-slate-800/60 border-slate-700/60">
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 block mb-1">יחידת לימוד נוכחית</span>
+                            <h4 id="cdashCurrentUnitTitle" class="text-xs font-extrabold text-white truncate">--</h4>
+                        </div>
+                        <div class="mt-2 pt-2 border-t border-slate-700/40 flex items-center justify-between">
+                            <span class="text-[10px] text-slate-400">מומלץ כעת: <strong id="cdashRecUnitTitle" class="text-slate-200">--</strong></span>
+                            <span id="cdashPaceTag" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-brand-500/20 text-brand-300">--</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. ASSIGNMENTS STATUS DONUT CHART -->
+                    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-3">
+                        <div class="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-slate-700" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path id="donutSegmentSubmitted" stroke-dasharray="0, 100" class="text-emerald-400" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <span id="donutCenterText" class="absolute text-[10px] font-bold text-white">0%</span>
+                        </div>
+                        <div class="space-y-0.5 text-[10px] flex-1">
+                            <span class="text-[10px] font-bold text-slate-300 block mb-0.5">סטטוס מטלות</span>
+                            <div class="flex items-center justify-between text-emerald-400">
+                                <span>הוגשו:</span>
+                                <span id="donutCountSubmitted" class="font-bold">0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-rose-400">
+                                <span>עבר מועד:</span>
+                                <span id="donutCountOverdue" class="font-bold">0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-400">
+                                <span>טרם הוגשו:</span>
+                                <span id="donutCountPending" class="font-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. ATTENDANCE DONUT CHART -->
+                    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center gap-3">
+                        <div class="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-slate-700" stroke-width="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path id="donutSegmentAttended" stroke-dasharray="0, 100" class="text-brand-400" stroke-width="4" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <span id="donutAttendedCenterText" class="absolute text-[10px] font-bold text-white">0%</span>
+                        </div>
+                        <div class="space-y-0.5 text-[10px] flex-1">
+                            <span class="text-[10px] font-bold text-slate-300 block mb-0.5">נוכחות במפגשים</span>
+                            <div class="flex items-center justify-between text-brand-400">
+                                <span>נכחתי:</span>
+                                <span id="donutCountAttended" class="font-bold">0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-rose-400">
+                                <span>נעדרתי:</span>
+                                <span id="donutCountMissed" class="font-bold">0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-400">
+                                <span>עתידי:</span>
+                                <span id="donutCountUpcomingMeetings" class="font-bold">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. ASSIGNMENT POINTS PROGRESS BAR -->
+                    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[10px] font-bold text-slate-300">
+                                <span>נקודות מטלות שהוגשו</span>
+                                <span id="cdashPointsRatioText" class="text-amber-400">0 / 15 נק'</span>
+                            </div>
+                            <div class="w-full bg-slate-700 h-2 rounded-full mt-2 overflow-hidden">
+                                <div id="cdashPointsProgressBar" class="bg-gradient-to-r from-amber-500 to-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TABS HEADER BAR -->
+                <div class="flex items-center gap-1 mt-4 border-b border-slate-800">
+                    <button id="tabBtn-schedule" onclick="switchCourseTab('schedule')" class="px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-brand-600 text-white">
+                        <i class="fa-regular fa-calendar-days ml-1.5"></i>לו"ז הקורס
+                    </button>
+                    <button id="tabBtn-units" onclick="switchCourseTab('units')" class="px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-slate-800 text-slate-400 hover:text-slate-200">
+                        <i class="fa-solid fa-list-check ml-1.5"></i>יחידות לימוד
+                    </button>
+                    <button id="tabBtn-assignments" onclick="switchCourseTab('assignments')" class="px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-slate-800 text-slate-400 hover:text-slate-200">
+                        <i class="fa-solid fa-file-pen ml-1.5"></i>מטלות
+                    </button>
+                    <button id="tabBtn-links" onclick="switchCourseTab('links')" class="px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-slate-800 text-slate-400 hover:text-slate-200">
+                        <i class="fa-solid fa-link ml-1.5"></i>קישורים מהירים
+                    </button>
+                </div>
+            </div>
+
+            <!-- MODAL BODY CONTENT -->
+            <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4">
+                
+                <!-- TAB 1: COURSE WEEKLY SCHEDULE -->
+                <div id="tabContent-schedule" class="space-y-3">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h3 class="text-xs font-bold text-slate-300">לוח שבועי ממוקד לקורס</h3>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeCourseModalWeek(-1)" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded text-slate-300 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                            <select id="courseModalWeekSelect" onchange="onCourseModalWeekChange(this.value)" class="bg-slate-800 border border-slate-700 text-slate-200 text-xs rounded px-2 py-1 font-bold">
+                                <!-- Dynamic options -->
+                            </select>
+                            <button onclick="changeCourseModalWeek(1)" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded text-slate-300 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button onclick="goToCourseModalCurrentWeek()" class="px-2.5 py-1 bg-brand-600/20 text-brand-400 hover:bg-brand-600/30 border border-brand-500/30 rounded text-xs font-bold transition-colors">
+                                השבוע הנוכחי
+                            </button>
+                            <button onclick="openItemModal(currentDashboardCourseId, 'meeting')" class="px-3 py-1 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>הוסף מפגש</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="courseModalDayGrid" class="grid grid-cols-7 gap-1.5 min-w-[650px] overflow-x-auto">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 2: UNITS LIST -->
+                <div id="tabContent-units" class="hidden space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-bold text-slate-300">מעקב למידת יחידות לימוד ופרקים</h3>
+                        <div class="flex items-center gap-3">
+                            <span id="cdashUnitsRatio" class="text-xs font-bold text-brand-400">0/0 הושלמו</span>
+                            <button onclick="openItemModal(currentDashboardCourseId, 'unit')" class="px-3 py-1 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>הוסף יחידת לימוד</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="cdashUnitsList" class="space-y-2">
+                        <!-- Dynamic units -->
+                    </div>
+                </div>
+
+                <!-- TAB 3: ASSIGNMENTS & GRADE CALCULATOR -->
+                <div id="tabContent-assignments" class="hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-bold text-slate-300">רשימת מטלות והזנת ציונים</h3>
+                        <div class="flex items-center gap-4">
+                            <div class="text-left">
+                                <span class="text-[10px] text-slate-400 block">ציון משוקלל נוכחי:</span>
+                                <span id="cdashWeightedTotalGrade" class="text-sm font-extrabold text-emerald-400">--</span>
+                            </div>
+                            <button onclick="openItemModal(currentDashboardCourseId, 'assignment')" class="px-3 py-1 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>הוסף מטלה</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="cdashAssignmentsList" class="space-y-2">
+                        <!-- Dynamic assignments -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: QUICK LINKS -->
+                <div id="tabContent-links" class="hidden space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-bold text-slate-300">קישורים מהירים ואתר הקורס</h3>
+                        <button onclick="openLinkModal(currentDashboardCourseId)" class="px-3 py-1 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">
+                            + הוסף קישור
+                        </button>
+                    </div>
+                    <div id="cdashLinksList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Dynamic links -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD/EDIT ITEM (MEETING / UNIT / ASSIGNMENT) -->
+    <div id="itemModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-md p-4 space-y-3 shadow-2xl">
+            <h3 id="itemModalTitle" class="text-xs font-bold text-white border-b border-slate-800 pb-2">הוספת פריט</h3>
+            <form onsubmit="handleSaveItem(event)" class="space-y-3">
+                <input type="hidden" id="itemCourseId">
+                <input type="hidden" id="itemId">
+                <input type="hidden" id="itemType">
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 mb-1">כותרת / שם</label>
+                    <input type="text" id="itemTitleInput" required placeholder="שם הפריט..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                </div>
+
+                <!-- Meeting Fields -->
+                <div id="itemMeetingFields" class="space-y-3 hidden">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">תאריך המפגש</label>
+                            <input type="date" id="itemMeetingDate" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">שעת התחלה</label>
+                            <input type="time" id="itemMeetingTime" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 mb-1">שעת סיום</label>
+                        <input type="time" id="itemMeetingEndTime" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+
+                <!-- Unit Fields -->
+                <div id="itemUnitFields" class="space-y-3 hidden">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">שבוע התחלה (1-14)</label>
+                            <input type="number" id="itemUnitStartWeek" min="1" max="14" value="1" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">שבוע סיום (1-14)</label>
+                            <input type="number" id="itemUnitEndWeek" min="1" max="14" value="1" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignment Fields -->
+                <div id="itemAssignmentFields" class="space-y-3 hidden">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">תאריך הגשה</label>
+                            <input type="date" id="itemAssignmentDate" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">מספר נקודות חובה</label>
+                            <input type="number" id="itemAssignmentPoints" min="0" value="4" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeItemModal()" class="px-3 py-1.5 rounded bg-slate-800 text-slate-300 text-xs font-bold">ביטול</button>
+                    <button type="submit" class="px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">שמור</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD/EDIT LINK -->
+    <div id="linkModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl w-full max-w-md p-4 space-y-3 shadow-2xl">
+            <h3 id="linkModalTitle" class="text-xs font-bold text-white border-b border-slate-800 pb-2">הוספת / עריכת קישור מהיר</h3>
+            <form onsubmit="handleSaveLink(event)" class="space-y-3">
+                <input type="hidden" id="linkCourseId">
+                <input type="hidden" id="linkId">
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 mb-1">כותרת הקישור</label>
+                    <input type="text" id="linkTitleInput" required placeholder="אתר הקורס / זום" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 mb-1">כתובת ה-URL</label>
+                    <input type="url" id="linkUrlInput" required placeholder="https://..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 mb-1">אייקון</label>
+                    <select id="linkIconInput" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        <option value="fa-globe">🌐 אתר קורס / גלובלי</option>
+                        <option value="fa-video">🎥 זום / מפגש מקוון</option>
+                        <option value="fa-folder">📁 דרייב / חומרי לימוד</option>
+                        <option value="fa-comments">💬 פורום / צ'אט</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeLinkModal()" class="px-3 py-1.5 rounded bg-slate-800 text-slate-300 text-xs font-bold">ביטול</button>
+                    <button type="submit" class="px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">שמור</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: COURSE MANAGEMENT & ADDITION -->
+    <div id="manageCourseModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl p-5 space-y-4 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 id="manageModalTitle" class="text-sm font-extrabold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-brand-400"></i>
+                    <span>ניהול קורסים במערכת</span>
+                </h3>
+                <button onclick="closeCourseModal()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- TAB CONTAINER -->
+            <div id="manageViewList" class="space-y-3 overflow-y-auto flex-1">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                    <span class="text-xs font-bold text-slate-300">קורסים פעילים במערכת</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="openNewCourseJsonTab()" class="px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-file-import"></i>
+                            <span>הוסף קורס מ-JSON</span>
+                        </button>
+                        <button onclick="openNewCourseFormTab()" class="px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>הוסף קורס חדש</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="manageCoursesListContainer" class="space-y-2">
+                    <!-- Dynamic List of Courses -->
+                </div>
+            </div>
+
+            <!-- TAB: FORM -->
+            <div id="manageViewForm" class="space-y-3 overflow-y-auto flex-1 hidden">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span id="manageFormHeaderTitle" class="text-xs font-bold text-slate-300">הוספת קורס חדש</span>
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="switchToJsonBtn" onclick="switchManageModalTab('json')" class="text-xs text-brand-400 font-bold hover:underline">טען מקובץ JSON</button>
+                        <span id="switchToJsonSeparator" class="text-slate-600">|</span>
+                        <button type="button" onclick="switchManageModalTab('list')" class="text-xs text-slate-400 hover:text-slate-200">חזרה לרשימה</button>
+                    </div>
+                </div>
+                <form onsubmit="handleSaveCourse(event)" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div class="sm:col-span-2">
+                            <label class="block text-[11px] text-slate-300 mb-1">שם הקורס</label>
+                            <input type="text" id="formCourseName" required placeholder="לדוגמה: אלגוריתמים" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">קוד קורס</label>
+                            <input type="text" id="formCourseCode" placeholder="לדוגמה: 20417" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">מנחה הקורס</label>
+                            <input type="text" id="formCourseInstructor" placeholder="שם המנחה" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">זמני המפגשים</label>
+                            <input type="text" id="formCourseTime" placeholder="לדוגמה: ימי א', 16:00-18:00" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">נקודות חובה נדרשות במטלות</label>
+                            <input type="number" id="formCourseMinPoints" min="0" value="15" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-300 mb-1">צבע נושא</label>
+                            <input type="color" id="formCourseColor" value="#0284c7" class="w-full bg-slate-800 border border-slate-700 rounded-lg h-8 p-1 cursor-pointer">
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button type="button" onclick="switchManageModalTab('list')" class="px-3 py-1.5 rounded bg-slate-800 text-slate-300 text-xs font-bold">ביטול</button>
+                        <button type="submit" class="px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">שמור קורס</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- TAB: JSON -->
+            <div id="manageViewJson" class="space-y-3 overflow-y-auto flex-1 hidden">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span class="text-xs font-bold text-slate-300">הוספה / עריכת קורס בפורמט JSON</span>
+                    <button type="button" onclick="switchManageModalTab('list')" class="text-xs text-slate-400 hover:text-slate-200">חזרה לרשימה</button>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="text-[11px] text-slate-400">קוד JSON של הקורס:</label>
+                        <div class="flex items-center gap-2">
+                            <button onclick="copySingleCourseSampleJson()" class="text-[10px] text-brand-400 font-bold hover:underline">העתק דוגמת JSON</button>
+                            <label class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-0.5 rounded cursor-pointer border border-slate-700 font-bold">
+                                📁 בחר קובץ
+                                <input type="file" accept=".json" onchange="handleSingleCourseFileUpload(event)" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+                    <textarea id="singleCourseJsonTextarea" rows="8" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono text-emerald-400 focus:outline-none focus:border-brand-500" placeholder="הדבק כאן קוד JSON של קורס..."></textarea>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="switchManageModalTab('list')" class="px-3 py-1.5 rounded bg-slate-800 text-slate-300 text-xs font-bold">ביטול</button>
+                    <button onclick="applySingleCourseJsonImport()" class="px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">שמור והחל שינויים</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: BACKUP / RESTORE SYSTEM JSON -->
+    <div id="jsonModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl p-5 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-code text-brand-400"></i>
+                    <span>גיבוי ויבוא מכלול הנתונים (System JSON)</span>
+                </h3>
+                <button onclick="closeJsonModal()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+                ניתן לגבות את כל המידע וההגדרות של הקורסים במערכת לקוד JSON יחיד, או לשחזר נתונים שנשמרו בעבר.
+            </p>
+            <textarea id="jsonTextarea" rows="10" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono text-amber-300 focus:outline-none focus:border-brand-500"></textarea>
+            <div class="flex items-center justify-between pt-2">
+                <button onclick="copyJsonToClipboard()" class="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold border border-slate-700 flex items-center gap-1.5">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>העתק ללוח</span>
+                </button>
+                <div class="flex items-center gap-2">
+                    <button onclick="closeJsonModal()" class="px-3 py-1.5 rounded bg-slate-800 text-slate-300 text-xs font-bold">סגור</button>
+                    <button onclick="applyJsonImport()" class="px-4 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold">שחזר נתונים מקוד זה</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 bg-brand-600 text-white px-4 py-2.5 rounded-xl shadow-xl font-bold text-xs flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">נשמר בהצלחה</span>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // --- SYSTEM VERSION ---
+        const APP_VERSION = "2.0.0"; // Format: major.minor.micro
+
+        // --- CONSTANTS & SEMESTER WEEKS ---
+        const SEMESTER_WEEKS = [
+            { weekNum: 1, name: "שבוע 1", startDate: "2026-10-25", endDate: "2026-10-30" },
+            { weekNum: 2, name: "שבוע 2", startDate: "2026-11-01", endDate: "2026-11-06" },
+            { weekNum: 3, name: "שבוע 3", startDate: "2026-11-08", endDate: "2026-11-13" },
+            { weekNum: 4, name: "שבוע 4", startDate: "2026-11-15", endDate: "2026-11-20" },
+            { weekNum: 5, name: "שבוע 5", startDate: "2026-11-22", endDate: "2026-11-27" },
+            { weekNum: 6, name: "שבוע 6", startDate: "2026-11-29", endDate: "2026-12-04" },
+            { weekNum: 7, name: "שבוע 7 (חנוכה)", startDate: "2026-12-06", endDate: "2026-12-11" },
+            { weekNum: 8, name: "שבוע 8", startDate: "2026-12-13", endDate: "2026-12-18" },
+            { weekNum: 9, name: "שבוע 9", startDate: "2026-12-20", endDate: "2026-12-25" },
+            { weekNum: 10, name: "שבוע 10", startDate: "2026-12-27", endDate: "2027-01-01" },
+            { weekNum: 11, name: "שבוע 11", startDate: "2027-01-03", endDate: "2027-01-08" },
+            { weekNum: 12, name: "שבוע 12", startDate: "2027-01-10", endDate: "2027-01-15" },
+            { weekNum: 13, name: "שבוע 13", startDate: "2027-01-17", endDate: "2027-01-22" },
+            { weekNum: 14, name: "שבוע 14", startDate: "2027-01-24", endDate: "2027-01-29" }
+        ];
+
+        const HEBREW_DAYS = ['יום א\'', 'יום ב\'', 'יום ג\'', 'יום ד\'', 'יום ה\'', 'יום ו\'', 'שבת'];
+
+        // --- HELPER FUNCTIONS ---
+        let currentDashboardCourseId = null;
+        let editingCourseId = null;
+
+        function formatShortDate(dateStr) {
+            if (!dateStr) return '';
+            const parts = dateStr.split('-');
+            if (parts.length < 3) return dateStr;
+            return `${parts[2]}/${parts[1]}`;
+        }
+
+        function formatDateHebrew(dateStr) {
+            if (!dateStr) return '';
+            const parts = dateStr.split('-');
+            if (parts.length < 3) return dateStr;
+            return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+
+        function formatMeetingTime(m) {
+            if (!m) return '';
+            if (m.endTime) return `${m.time}-${m.endTime}`;
+            return m.time || '';
+        }
+
+        function getUnitWeekText(unit) {
+            if (!unit) return '';
+            const start = unit.startWeek || 1;
+            const end = unit.endWeek || start;
+            if (start === end) {
+                return `שבוע ${start}`;
+            }
+            return `שבועות ${start}-${end}`;
+        }
+
+        function getActualCalendarWeekIndex() {
+            const today = new Date().toISOString().split('T')[0];
+            for (let i = 0; i < SEMESTER_WEEKS.length; i++) {
+                const w = SEMESTER_WEEKS[i];
+                if (today >= w.startDate && today <= w.endDate) {
+                    return i;
+                }
+            }
+            if (today < SEMESTER_WEEKS[0].startDate) return 0;
+            for (let i = 0; i < SEMESTER_WEEKS.length - 1; i++) {
+                if (today > SEMESTER_WEEKS[i].endDate && today < SEMESTER_WEEKS[i+1].startDate) {
+                    return i;
+                }
+            }
+            return SEMESTER_WEEKS.length - 1;
+        }
+
+        function getCourseLearningPace(course) {
+            if (!course || !course.units || course.units.length === 0) {
+                return { status: 'ON_TRACK', text: 'עומד בקצב' };
+            }
+            sortCourseItems(course);
+            const actualWeekIdx = getActualCalendarWeekIndex();
+            const currentWeekNum = SEMESTER_WEEKS[actualWeekIdx].weekNum;
+            const uncompletedUnits = course.units.filter(u => !u.completed);
+            
+            if (uncompletedUnits.length === 0) {
+                return { status: 'AHEAD', text: 'השלים הכל' };
+            }
+
+            const hasLaggingUnit = uncompletedUnits.some(u => {
+                const start = u.startWeek || 1;
+                const end = u.endWeek || start;
+                return end < currentWeekNum;
+            });
+
+            if (hasLaggingUnit) {
+                return { status: 'LAG', text: 'מפגר בקצב' };
+            }
+
+            const firstUncompleted = uncompletedUnits[0];
+            const start = firstUncompleted.startWeek || 1;
+
+            if (start > currentWeekNum) {
+                return { status: 'AHEAD', text: 'מקדים בקצב' };
+            } else {
+                return { status: 'ON_TRACK', text: 'עומד בקצב' };
+            }
+        }
+
+        function sortCourseItems(course) {
+            if (!course) return;
+            if (Array.isArray(course.units)) {
+                course.units.sort((a, b) => {
+                    const startA = a.startWeek || 1;
+                    const startB = b.startWeek || 1;
+                    if (startA !== startB) return startA - startB;
+                    const endA = a.endWeek || startA;
+                    const endB = b.endWeek || startB;
+                    return endA - endB;
+                });
+            }
+            if (Array.isArray(course.assignments)) {
+                course.assignments.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+            }
+            if (Array.isArray(course.meetings)) {
+                course.meetings.sort((a, b) => `${a.date || ''}T${a.time || ''}`.localeCompare(`${b.date || ''}T${b.time || ''}`));
+            }
+        }
+
+        function getWeeklyTasksData() {
+            const actualWeekIdx = getActualCalendarWeekIndex();
+            const currentWeekNum = SEMESTER_WEEKS[actualWeekIdx].weekNum;
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const pad = n => String(n).padStart(2, '0');
+            const todayStr = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+
+            const nextWeekDate = new Date(today);
+            nextWeekDate.setDate(today.getDate() + 7);
+            const nextWeekStr = `${nextWeekDate.getFullYear()}-${pad(nextWeekDate.getMonth() + 1)}-${pad(nextWeekDate.getDate())}`;
+
+            const lagUnits = [];
+            const upcomingAssignments = [];
+            const endingUnits = [];
+
+            appState.courses.forEach(course => {
+                // Check units (Type 3: Lagging units & Type 1: Units ending this week)
+                (course.units || []).forEach(u => {
+                    if (u.completed) return;
+                    const start = u.startWeek || 1;
+                    const end = u.endWeek || start;
+
+                    if (end < currentWeekNum) {
+                        lagUnits.push({
+                            ...u,
+                            courseId: course.id,
+                            courseName: course.name,
+                            courseColor: course.color,
+                            startWeek: start,
+                            endWeek: end,
+                            weeksLate: currentWeekNum - end
+                        });
+                    } else if (end === currentWeekNum) {
+                        endingUnits.push({
+                            ...u,
+                            courseId: course.id,
+                            courseName: course.name,
+                            courseColor: course.color,
+                            startWeek: start,
+                            endWeek: end
+                        });
+                    }
+                });
+
+                // Check assignments (Type 2: Overdue or due within 7 days from today)
+                (course.assignments || []).forEach(a => {
+                    if (a.completed || !a.date) return;
+                    if (a.date <= nextWeekStr) {
+                        const dueDateObj = new Date(`${a.date}T00:00:00`);
+                        const diffDays = Math.round((dueDateObj - today) / (1000 * 60 * 60 * 24));
+                        upcomingAssignments.push({
+                            ...a,
+                            courseId: course.id,
+                            courseName: course.name,
+                            courseColor: course.color,
+                            daysLeft: diffDays
+                        });
+                    }
+                });
+            });
+
+            lagUnits.sort((a, b) => a.endWeek - b.endWeek);
+            upcomingAssignments.sort((a, b) => a.date.localeCompare(b.date));
+            endingUnits.sort((a, b) => a.startWeek - b.startWeek);
+
+            return { lagUnits, upcomingAssignments, endingUnits };
+        }
+
+        function renderWeeklyTasksSection() {
+            const section = document.getElementById('weeklyTasksSection');
+            const subtitle = document.getElementById('weeklyTasksSubtitle');
+            const details = document.getElementById('weeklyTasksDetails');
+            const chevron = document.getElementById('weeklyTasksChevron');
+            const foldLabel = document.getElementById('weeklyTasksFoldLabel');
+            const iconBox = document.getElementById('weeklyTasksIconBox');
+            const headerIcon = document.getElementById('weeklyTasksHeaderIcon');
+            const lagBadge = document.getElementById('weeklyTasksLagBadge');
+
+            if (!section || !subtitle) return;
+
+            const { lagUnits, upcomingAssignments, endingUnits } = getWeeklyTasksData();
+            const hasLag = lagUnits.length > 0;
+
+            // Update visual alert state if lag exists
+            if (hasLag) {
+                section.classList.add('!border-rose-500/50', 'bg-rose-950/10');
+                iconBox.className = 'w-11 h-11 rounded-xl bg-rose-500/15 border border-rose-500/40 flex items-center justify-center text-rose-400 text-lg shrink-0 transition-colors';
+                headerIcon.className = 'fa-solid fa-triangle-exclamation';
+                lagBadge.classList.remove('hidden');
+            } else {
+                section.classList.remove('!border-rose-500/50', 'bg-rose-950/10');
+                iconBox.className = 'w-11 h-11 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-lg shrink-0 transition-colors';
+                headerIcon.className = 'fa-solid fa-list-check';
+                lagBadge.classList.add('hidden');
+            }
+
+            // Subtitle counters
+            subtitle.innerHTML = `
+                <span class="${hasLag ? 'text-rose-300 font-bold' : 'text-slate-400'}">
+                    ${lagUnits.length} יחידות לימוד שאתה בפיגור בקצב בהן
+                </span>
+                <span class="text-slate-600">•</span>
+                <span class="${upcomingAssignments.length > 0 ? 'text-amber-300 font-semibold' : 'text-slate-400'}">
+                    ${upcomingAssignments.length} מטלות להגשה
+                </span>
+                <span class="text-slate-600">•</span>
+                <span class="${endingUnits.length > 0 ? 'text-brand-300 font-semibold' : 'text-slate-400'}">
+                    ${endingUnits.length} יחידות לימוד לסיים
+                </span>
+            `;
+
+            // Collapse / Expand state
+            if (appState.weeklyTasksCollapsed) {
+                details.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+                if (foldLabel) foldLabel.textContent = 'הצג משימות';
+            } else {
+                details.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+                if (foldLabel) foldLabel.textContent = 'כווץ תצוגה';
+            }
+
+            // Section Counters
+            document.getElementById('tasksSectionLagCount').textContent = lagUnits.length;
+            document.getElementById('tasksSectionAssignmentsCount').textContent = upcomingAssignments.length;
+            document.getElementById('tasksSectionEndingUnitsCount').textContent = endingUnits.length;
+
+            // Render Section 1: Lagging Units (Type 3)
+            const lagContainer = document.getElementById('tasksListLagUnits');
+            if (lagUnits.length === 0) {
+                lagContainer.innerHTML = `<div class="text-xs text-slate-500 py-2 px-3 rounded-xl bg-slate-900/40 border border-slate-800/60">לא קיימות יחידות לימוד בפיגור בקצב</div>`;
+            } else {
+                lagContainer.innerHTML = lagUnits.map(u => {
+                    const lagText = u.weeksLate === 1 ? 'איחור של שבוע' : `איחור של ${u.weeksLate} שבועות`;
+                    return `
+                        <div class="p-2.5 rounded-xl bg-rose-950/30 border border-rose-800/60 hover:border-rose-500/70 flex items-center justify-between gap-3 transition-all">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <input type="checkbox" onchange="toggleUnitStatus('${u.courseId}', '${u.id}')" class="w-4 h-4 rounded text-rose-500 focus:ring-0 cursor-pointer shrink-0" title="סמן יחידה כהושלמה">
+                                <div class="w-2.5 h-7 rounded-full shrink-0" style="background-color: ${u.courseColor}"></div>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="text-[11px] font-extrabold" style="color: ${u.courseColor}">${u.courseName}</span>
+                                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold">${lagText}</span>
+                                    </div>
+                                    <h4 class="text-xs font-bold text-white truncate mt-0.5">${u.title}</h4>
+                                </div>
+                            </div>
+                            <button onclick="openCourseDashboardModal('${u.courseId}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold border border-slate-700 shrink-0 transition-colors">
+                                דף קורס
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Render Section 2: Upcoming & Overdue Assignments (Type 2)
+            const assContainer = document.getElementById('tasksListUpcomingAssignments');
+            if (upcomingAssignments.length === 0) {
+                assContainer.innerHTML = `<div class="text-xs text-slate-500 py-2 px-3 rounded-xl bg-slate-900/40 border border-slate-800/60">לא קיימות מטלות להגשה בשבוע הקרוב</div>`;
+            } else {
+                assContainer.innerHTML = upcomingAssignments.map(a => {
+                    const isOverdue = a.daysLeft < 0;
+                    let dueLabel = '';
+                    if (isOverdue) {
+                        dueLabel = 'עבר מועד ההגשה';
+                    } else if (a.daysLeft === 0) {
+                        dueLabel = 'להגשה היום!';
+                    } else if (a.daysLeft === 1) {
+                        dueLabel = 'להגשה מחר';
+                    } else {
+                        dueLabel = `בעוד ${a.daysLeft} ימים`;
+                    }
+
+                    const cardClasses = isOverdue
+                        ? 'bg-rose-950/35 border-rose-700/70 hover:border-rose-500'
+                        : 'bg-amber-950/20 border-amber-800/50 hover:border-amber-500/60';
+                    const badgeClasses = isOverdue
+                        ? 'bg-rose-500/25 text-rose-200 border border-rose-500/40'
+                        : 'bg-amber-500/20 text-amber-300';
+                    const checkboxColor = isOverdue ? 'text-rose-500' : 'text-amber-500';
+
+                    return `
+                        <div class="p-2.5 rounded-xl ${cardClasses} border flex items-center justify-between gap-3 transition-all">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <input type="checkbox" onchange="toggleAssignmentStatus('${a.id}')" class="w-4 h-4 rounded ${checkboxColor} focus:ring-0 cursor-pointer shrink-0" title="סמן מטלה כהוגשה">
+                                <div class="w-2.5 h-7 rounded-full shrink-0" style="background-color: ${a.courseColor}"></div>
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="text-[11px] font-extrabold" style="color: ${a.courseColor}">${a.courseName}</span>
+                                        <span class="text-[10px] px-1.5 py-0.5 rounded ${badgeClasses} font-bold flex items-center gap-1">
+                                            ${isOverdue ? '<i class="fa-solid fa-circle-exclamation text-rose-400"></i>' : ''}
+                                            <span>${formatDateHebrew(a.date)} • ${dueLabel}</span>
+                                        </span>
+                                        <span class="text-[10px] text-slate-400 font-semibold">${a.points} נק'</span>
+                                    </div>
+                                    <h4 class="text-xs font-bold text-white truncate mt-0.5">${a.title}</h4>
+                                </div>
+                            </div>
+                            <button onclick="openCourseDashboardModal('${a.courseId}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold border border-slate-700 shrink-0 transition-colors">
+                                דף קורס
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Render Section 3: Units Ending This Week (Type 1)
+            const endUnitsContainer = document.getElementById('tasksListEndingUnits');
+            if (endingUnits.length === 0) {
+                endUnitsContainer.innerHTML = `<div class="text-xs text-slate-500 py-2 px-3 rounded-xl bg-slate-900/40 border border-slate-800/60">לא קיימות יחידות לימוד לסיום השבוע</div>`;
+            } else {
+                endUnitsContainer.innerHTML = endingUnits.map(u => `
+                    <div class="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/70 hover:border-brand-500/50 flex items-center justify-between gap-3 transition-all">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                            <input type="checkbox" onchange="toggleUnitStatus('${u.courseId}', '${u.id}')" class="w-4 h-4 rounded text-brand-500 focus:ring-0 cursor-pointer shrink-0" title="סמן יחידה כהושלמה">
+                            <div class="w-2.5 h-7 rounded-full shrink-0" style="background-color: ${u.courseColor}"></div>
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-[11px] font-extrabold" style="color: ${u.courseColor}">${u.courseName}</span>
+                                    <span class="text-[10px] px-1.5 py-0.2 rounded bg-brand-500/20 text-brand-300 font-bold">מסתיים השבוע (${getUnitWeekText(u)})</span>
+                                </div>
+                                <h4 class="text-xs font-bold text-white truncate mt-0.5">${u.title}</h4>
+                            </div>
+                        </div>
+                        <button onclick="openCourseDashboardModal('${u.courseId}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold border border-slate-700 shrink-0 transition-colors">
+                            דף קורס
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // --- COLOR SCHEMES PRESETS ---
+        const THEMES = [
+            {
+                id: 'slate',
+                name: 'קלאסי (Dark Slate)',
+                tag: 'ניטרלי',
+                tagClass: 'bg-sky-500/20 text-sky-300',
+                bgBody: '#0f172a',
+                bgHeader: 'rgba(15, 23, 42, 0.95)',
+                bgCard: 'rgba(30, 41, 59, 0.7)',
+                border: 'rgba(255, 255, 255, 0.08)',
+                borderHover: 'rgba(255, 255, 255, 0.18)',
+                todayBg: 'rgba(14, 165, 233, 0.08)',
+                todayBorder: 'rgba(14, 165, 233, 0.4)',
+                previewColor: '#0ea5e9'
+            },
+            {
+                id: 'indigo',
+                name: 'אינדיגו מלכותי (Royal Indigo)',
+                tag: 'קלאסי / גברי',
+                tagClass: 'bg-indigo-500/20 text-indigo-300',
+                bgBody: '#0b132b',
+                bgHeader: 'rgba(11, 19, 43, 0.95)',
+                bgCard: 'rgba(28, 37, 65, 0.75)',
+                border: 'rgba(99, 102, 241, 0.15)',
+                borderHover: 'rgba(99, 102, 241, 0.35)',
+                todayBg: 'rgba(99, 102, 241, 0.1)',
+                todayBorder: 'rgba(99, 102, 241, 0.4)',
+                previewColor: '#6366f1'
+            },
+            {
+                id: 'rose',
+                name: 'רוז שקיעה (Sunset Rose)',
+                tag: 'נשי / חם',
+                tagClass: 'bg-rose-500/20 text-rose-300',
+                bgBody: '#1f0d1b',
+                bgHeader: 'rgba(31, 13, 27, 0.95)',
+                bgCard: 'rgba(48, 20, 41, 0.75)',
+                border: 'rgba(244, 63, 94, 0.15)',
+                borderHover: 'rgba(244, 63, 94, 0.35)',
+                todayBg: 'rgba(244, 63, 94, 0.1)',
+                todayBorder: 'rgba(244, 63, 94, 0.4)',
+                previewColor: '#f43f5e'
+            },
+            {
+                id: 'emerald',
+                name: 'אמרלד יער (Emerald Mint)',
+                tag: 'ניטרלי / רענן',
+                tagClass: 'bg-emerald-500/20 text-emerald-300',
+                bgBody: '#022c22',
+                bgHeader: 'rgba(2, 44, 34, 0.95)',
+                bgCard: 'rgba(6, 78, 59, 0.65)',
+                border: 'rgba(16, 185, 129, 0.15)',
+                borderHover: 'rgba(16, 185, 129, 0.35)',
+                todayBg: 'rgba(16, 185, 129, 0.1)',
+                todayBorder: 'rgba(16, 185, 129, 0.4)',
+                previewColor: '#10b981'
+            },
+            {
+                id: 'amethyst',
+                name: 'אמתיסט וסגול (Purple Amethyst)',
+                tag: 'ניטרלי / תוסס',
+                tagClass: 'bg-purple-500/20 text-purple-300',
+                bgBody: '#161026',
+                bgHeader: 'rgba(22, 16, 38, 0.95)',
+                bgCard: 'rgba(40, 27, 68, 0.75)',
+                border: 'rgba(168, 85, 247, 0.15)',
+                borderHover: 'rgba(168, 85, 247, 0.35)',
+                todayBg: 'rgba(168, 85, 247, 0.1)',
+                todayBorder: 'rgba(168, 85, 247, 0.4)',
+                previewColor: '#a855f7'
+            },
+            {
+                id: 'amber',
+                name: 'ענבר ואובסידיאן (Amber Dusk)',
+                tag: 'ניטרלי / יוקרתי',
+                tagClass: 'bg-amber-500/20 text-amber-300',
+                bgBody: '#18181b',
+                bgHeader: 'rgba(24, 24, 27, 0.95)',
+                bgCard: 'rgba(39, 39, 42, 0.75)',
+                border: 'rgba(245, 158, 11, 0.15)',
+                borderHover: 'rgba(245, 158, 11, 0.35)',
+                todayBg: 'rgba(245, 158, 11, 0.1)',
+                todayBorder: 'rgba(245, 158, 11, 0.4)',
+                previewColor: '#f59e0b'
+            }
+        ];
+
+        // DEFAULT INITIAL COURSES DATA
+        const DEFAULT_COURSES = [
+            {
+                id: 'c_prob',
+                name: 'הסתברות ומבוא לסטטיסטיקה',
+                code: '2027א',
+                instructor: 'מרצה להסתברות',
+                time: 'ימי ד\', 16:45 – 18:45',
+                color: '#0284c7',
+                minRequiredPoints: 15,
+                links: [
+                    { id: 'l1', title: 'אתר הקורס באופק', url: 'https://opal.openu.ac.il', icon: 'fa-globe' }
+                ],
+                units: [
+                    { id: 'u1', title: 'פרק 1', startWeek: 1, endWeek: 1, completed: true },
+                    { id: 'u2', title: 'פרק 2', startWeek: 2, endWeek: 3, completed: true },
+                    { id: 'u3', title: 'פרק 3', startWeek: 4, endWeek: 5, completed: false },
+                    { id: 'u4', title: 'פרק 4', startWeek: 6, endWeek: 7, completed: false },
+                    { id: 'u5', title: 'פרק 5', startWeek: 8, endWeek: 8, completed: false },
+                    { id: 'u6', title: 'פרק 6', startWeek: 9, endWeek: 10, completed: false },
+                    { id: 'u7', title: 'פרק 7', startWeek: 11, endWeek: 11, completed: false },
+                    { id: 'u8', title: 'פרק 8', startWeek: 12, endWeek: 13, completed: false },
+                    { id: 'u9', title: 'פרק 9', startWeek: 14, endWeek: 14, completed: false }
+                ],
+                meetings: [
+                    { id: 'm1', title: 'מפגש 01', date: '2026-11-04', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm2', title: 'מפגש 02', date: '2026-11-11', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm3', title: 'מפגש 03', date: '2026-11-18', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm4', title: 'מפגש 04', date: '2026-11-25', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm5', title: 'מפגש 05', date: '2026-12-02', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm6', title: 'מפגש 06', date: '2026-12-09', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm7', title: 'מפגש 07', date: '2026-12-16', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm8', title: 'מפגש 08', date: '2026-12-23', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm9', title: 'מפגש 09', date: '2026-12-30', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm10', title: 'מפגש 10', date: '2027-01-06', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm11', title: 'מפגש 11', date: '2027-01-20', time: '16:45', endTime: '18:45', completed: false },
+                    { id: 'm12', title: 'מפגש 12', date: '2027-01-27', time: '16:45', endTime: '18:45', completed: false }
+                ],
+                assignments: [
+                    { id: 'a1', title: 'מטלה 01', date: '2026-11-15', points: 4, completed: false, grade: null },
+                    { id: 'a2', title: 'מטלה 02', date: '2026-11-22', points: 4, completed: false, grade: null },
+                    { id: 'a3', title: 'מטלה 03', date: '2026-12-06', points: 4, completed: false, grade: null },
+                    { id: 'a4', title: 'מטלה 04', date: '2026-12-20', points: 4, completed: false, grade: null },
+                    { id: 'a5', title: 'מטלה 05', date: '2027-01-03', points: 4, completed: false, grade: null },
+                    { id: 'a6', title: 'מטלה 06', date: '2027-01-17', points: 4, completed: false, grade: null },
+                    { id: 'a7', title: 'מטלה 07', date: '2027-01-31', points: 4, completed: false, grade: null }
+                ]
+            },
+            {
+                id: 'c_ai',
+                name: 'מבוא לבינה מלאכותית',
+                code: '20551',
+                instructor: 'חנה פלדמן',
+                time: 'ימי ג\', 18:00 – 21:00',
+                color: '#8b5cf6',
+                minRequiredPoints: 18,
+                links: [
+                    { id: 'l2', title: 'אתר הקורס', url: 'https://opal.openu.ac.il', icon: 'fa-globe' }
+                ],
+                units: [
+                    { id: 'u10', title: 'חיפוש במרחב מצבים (פרק 3)', startWeek: 1, endWeek: 2, completed: true },
+                    { id: 'u11', title: 'יוריסטיקה וחיפוש מקומי (פרק 4)', startWeek: 3, endWeek: 4, completed: false },
+                    { id: 'u12', title: 'משחקי יריבות (פרק 6)', startWeek: 5, endWeek: 6, completed: false },
+                    { id: 'u13', title: 'CSP - בעיות סיפוק אילוצים (פרק 5)', startWeek: 7, endWeek: 8, completed: false },
+                    { id: 'u14', title: 'MDP - תהליכי החלטה מרקוביים (פרק 16)', startWeek: 9, endWeek: 10, completed: false },
+                    { id: 'u15', title: 'רשתות בייסיאניות (פרקים 12-13)', startWeek: 11, endWeek: 12, completed: false },
+                    { id: 'u16', title: 'למידת מכונה ועצי החלטה (פרק 19)', startWeek: 13, endWeek: 14, completed: false }
+                ],
+                meetings: [
+                    { id: 'm20', title: 'מפגש 01', date: '2026-11-03', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm21', title: 'מפגש 02', date: '2026-11-10', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm22', title: 'מפגש 03', date: '2026-11-24', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm23', title: 'מפגש 04', date: '2026-12-15', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm24', title: 'מפגש 05', date: '2026-12-22', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm25', title: 'מפגש 06', date: '2027-01-05', time: '18:00', endTime: '21:00', completed: false },
+                    { id: 'm26', title: 'מפגש 07', date: '2027-01-19', time: '18:00', endTime: '21:00', completed: false }
+                ],
+                assignments: [
+                    { id: 'a10', title: 'ממ"ן 01 (תכנות)', date: '2026-11-19', points: 6, completed: false, grade: null },
+                    { id: 'a11', title: 'ממ"ן 02 (תיאורטי)', date: '2026-12-03', points: 4, completed: false, grade: null },
+                    { id: 'a12', title: 'ממ"ן 03 (תכנות)', date: '2026-12-17', points: 6, completed: false, grade: null },
+                    { id: 'a13', title: 'ממ"ן 04 (תיאורטי)', date: '2026-12-31', points: 4, completed: false, grade: null },
+                    { id: 'a14', title: 'ממ"ן 05 (תכנות)', date: '2027-01-14', points: 6, completed: false, grade: null },
+                    { id: 'a15', title: 'ממ"ן 06 (תיאורטי)', date: '2027-01-28', points: 4, completed: false, grade: null }
+                ]
+            },
+            {
+                id: 'c_db',
+                name: 'מערכות בסיסי נתונים',
+                code: '2027א',
+                instructor: 'רועי רחמני',
+                time: 'ימי א\', 15:00 – 18:00',
+                color: '#10b981',
+                minRequiredPoints: 15,
+                links: [
+                    { id: 'l3', title: 'אתר הקורס', url: 'https://opal.openu.ac.il', icon: 'fa-globe' }
+                ],
+                units: [
+                    { id: 'u20', title: 'פרק 1: מבוא', startWeek: 1, endWeek: 1, completed: true },
+                    { id: 'u21', title: 'פרק 2: מודל היחסים', startWeek: 2, endWeek: 3, completed: false },
+                    { id: 'u22', title: 'פרק 3-5: שפת SQL', startWeek: 4, endWeek: 6, completed: false },
+                    { id: 'u23', title: 'פרק 6: מודל ישויות-קשרים', startWeek: 7, endWeek: 8, completed: false },
+                    { id: 'u24', title: 'פרק 7: תיכון במודל היחסים', startWeek: 9, endWeek: 10, completed: false },
+                    { id: 'u25', title: 'פרק 8-10: אחסון ואינדקסים', startWeek: 11, endWeek: 12, completed: false },
+                    { id: 'u26', title: 'פרק 11: עיבוד שאילתות', startWeek: 13, endWeek: 14, completed: false }
+                ],
+                meetings: [
+                    { id: 'm30', title: 'מפגש 01', date: '2026-11-01', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm31', title: 'מפגש 02', date: '2026-11-15', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm32', title: 'מפגש 03', date: '2026-11-29', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm33', title: 'מפגש 04', date: '2026-12-13', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm34', title: 'מפגש 05', date: '2026-12-27', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm35', title: 'מפגש 06', date: '2027-01-10', time: '15:00', endTime: '18:00', completed: false },
+                    { id: 'm36', title: 'מפגש 07', date: '2027-01-24', time: '15:00', endTime: '18:00', completed: false }
+                ],
+                assignments: [
+                    { id: 'a20', title: 'ממ"ן 01', date: '2026-11-13', points: 4, completed: false, grade: null },
+                    { id: 'a21', title: 'ממ"ן 02', date: '2026-12-04', points: 4, completed: false, grade: null },
+                    { id: 'a22', title: 'ממ"ן 03', date: '2027-01-01', points: 4, completed: false, grade: null },
+                    { id: 'a23', title: 'ממ"ן 04', date: '2027-01-15', points: 4, completed: false, grade: null },
+                    { id: 'a24', title: 'ממ"ן 05', date: '2027-01-31', points: 4, completed: false, grade: null }
+                ]
+            },
+            {
+                id: 'c_robotics',
+                name: 'רובוטיקה אלגוריתמית',
+                code: '20944',
+                instructor: 'זיו הופרט',
+                time: 'ימי ב\', 19:00 – 21:00',
+                color: '#f59e0b',
+                minRequiredPoints: 12,
+                links: [
+                    { id: 'l4', title: 'אתר הקורס', url: 'https://opal.openu.ac.il', icon: 'fa-globe' }
+                ],
+                units: [
+                    { id: 'u30', title: 'יחידה 1: מרחב הקונפיגורציות', startWeek: 1, endWeek: 2, completed: true },
+                    { id: 'u31', title: 'יחידה 2: תנועה של גוף קשיח', startWeek: 3, endWeek: 5, completed: false },
+                    { id: 'u32', title: 'יחידה 3: קינמטיקה ישרה', startWeek: 6, endWeek: 8, completed: false },
+                    { id: 'u33', title: 'יחידה 4: היעקוביאן', startWeek: 9, endWeek: 10, completed: false },
+                    { id: 'u34', title: 'יחידה 5: קינמטיקה הפוכה', startWeek: 11, endWeek: 13, completed: false }
+                ],
+                meetings: [
+                    { id: 'm40', title: 'מפגש 01', date: '2026-11-02', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm41', title: 'מפגש 02', date: '2026-11-09', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm42', title: 'מפגש 03', date: '2026-11-23', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm43', title: 'מפגש 04', date: '2026-12-07', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm44', title: 'מפגש 05', date: '2026-12-21', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm45', title: 'מפגש 06', date: '2027-01-04', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm46', title: 'מפגש 07', date: '2027-01-18', time: '19:00', endTime: '21:00', completed: false },
+                    { id: 'm47', title: 'מפגש 08', date: '2027-01-25', time: '19:00', endTime: '21:00', completed: false }
+                ],
+                assignments: [
+                    { id: 'a30', title: 'ממ"ן 11 (מטלה 01)', date: '2026-12-04', points: 5, completed: false, grade: null },
+                    { id: 'a31', title: 'ממ"ן 12 (מטלה 02)', date: '2027-01-01', points: 5, completed: false, grade: null },
+                    { id: 'a32', title: 'ממ"ן 13 (מטלה 03)', date: '2027-01-29', points: 5, completed: false, grade: null }
+                ]
+            }
+        ];
+
+        // --- APP STATE ---
+        let appState = {
+            courses: [],
+            currentWeekIndex: 1,
+            courseModalWeekIndex: 1,
+            weeklyTasksCollapsed: true,
+            activeThemeId: 'slate'
+        };
+
+        // --- THEME CUSTOMIZATION LOGIC ---
+        function applyTheme(themeId) {
+            const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
+            appState.activeThemeId = theme.id;
+
+            const root = document.documentElement;
+            root.style.setProperty('--theme-bg-body', theme.bgBody);
+            root.style.setProperty('--theme-bg-header', theme.bgHeader);
+            root.style.setProperty('--theme-bg-card', theme.bgCard);
+            root.style.setProperty('--theme-border', theme.border);
+            root.style.setProperty('--theme-border-hover', theme.borderHover);
+            root.style.setProperty('--theme-today-bg', theme.todayBg);
+            root.style.setProperty('--theme-today-border', theme.todayBorder);
+
+            localStorage.setItem('academic_dashboard_theme', theme.id);
+            renderThemeDropdownOptions();
+        }
+
+        function toggleThemeDropdown(e) {
+            if (e) e.stopPropagation();
+            const menu = document.getElementById('themeDropdownMenu');
+            if (menu) {
+                const isHidden = menu.classList.contains('hidden');
+                if (isHidden) {
+                    renderThemeDropdownOptions();
+                    menu.classList.remove('hidden');
+                } else {
+                    menu.classList.add('hidden');
+                }
+            }
+        }
+
+        function selectTheme(themeId) {
+            applyTheme(themeId);
+            const menu = document.getElementById('themeDropdownMenu');
+            if (menu) menu.classList.add('hidden');
+            showToast('ערכת הנושא עודכנה');
+        }
+
+        function renderThemeDropdownOptions() {
+            const container = document.getElementById('themeOptionsList');
+            if (!container) return;
+
+            container.innerHTML = THEMES.map(theme => {
+                const isActive = theme.id === appState.activeThemeId;
+                return `
+                    <button type="button" onclick="selectTheme('${theme.id}')" class="w-full p-2 rounded-lg flex items-center justify-between text-right text-xs transition-colors ${isActive ? 'bg-slate-800 border border-slate-700 font-bold text-white' : 'hover:bg-slate-800/60 text-slate-300'}">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded-full border border-white/20 shrink-0" style="background-color: ${theme.previewColor}"></span>
+                            <span>${theme.name}</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('themeDropdownMenu');
+            if (menu && !menu.classList.contains('hidden')) {
+                const btn = e.target.closest('button[onclick*="toggleThemeDropdown"]');
+                if (!btn) menu.classList.add('hidden');
+            }
+        });
+
+        // --- STORAGE MANAGEMENT ---
+        function loadSavedState() {
+            try {
+                const saved = localStorage.getItem('academic_dashboard_state');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    appState.courses = Array.isArray(parsed.courses) ? parsed.courses : [];
+                } else {
+                    appState.courses = [];
+                }
+            } catch (e) {
+                appState.courses = [];
+            }
+
+            appState.courses.forEach(sortCourseItems);
+
+            const savedTheme = localStorage.getItem('academic_dashboard_theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme('slate');
+            }
+        }
+
+        function loadDemoCourses() {
+            appState.courses = JSON.parse(JSON.stringify(DEFAULT_COURSES));
+            saveState();
+            showToast('קורסים לדוגמה נטענו בהצלחה!');
+        }
+
+        function saveState() {
+            appState.courses.forEach(sortCourseItems);
+            localStorage.setItem('academic_dashboard_state', JSON.stringify({
+                courses: appState.courses
+            }));
+            renderAllViews();
+        }
+
+        function toggleWeeklyTasksCollapse() {
+            appState.weeklyTasksCollapsed = !appState.weeklyTasksCollapsed;
+            renderWeeklyTasksSection();
+        }
+
+        // --- NAVIGATION & WEEK CHANGING ---
+        function changeWeek(delta) {
+            const newIdx = appState.currentWeekIndex + delta;
+            if (newIdx >= 0 && newIdx < SEMESTER_WEEKS.length) {
+                appState.currentWeekIndex = newIdx;
+                renderAllViews();
+            }
+        }
+
+        function onWeekDropdownChange(val) {
+            appState.currentWeekIndex = parseInt(val) || 0;
+            renderAllViews();
+        }
+
+        function goToCurrentWeek() {
+            appState.currentWeekIndex = getActualCalendarWeekIndex();
+            renderAllViews();
+        }
+
+        function changeCourseModalWeek(delta) {
+            const newIdx = appState.courseModalWeekIndex + delta;
+            if (newIdx >= 0 && newIdx < SEMESTER_WEEKS.length) {
+                appState.courseModalWeekIndex = newIdx;
+                if (currentDashboardCourseId) {
+                    const course = appState.courses.find(c => c.id === currentDashboardCourseId);
+                    if (course) renderCourseModalScheduleGrid(course);
+                }
+                populateWeekDropdowns();
+            }
+        }
+
+        function onCourseModalWeekChange(val) {
+            appState.courseModalWeekIndex = parseInt(val) || 0;
+            if (currentDashboardCourseId) {
+                const course = appState.courses.find(c => c.id === currentDashboardCourseId);
+                if (course) renderCourseModalScheduleGrid(course);
+            }
+        }
+
+        function goToCourseModalCurrentWeek() {
+            appState.courseModalWeekIndex = getActualCalendarWeekIndex();
+            if (currentDashboardCourseId) {
+                const course = appState.courses.find(c => c.id === currentDashboardCourseId);
+                if (course) renderCourseModalScheduleGrid(course);
+            }
+            populateWeekDropdowns();
+        }
+
+        // --- RENDER ENGINE ---
+        function renderAllViews() {
+            const welcomeSection = document.getElementById('welcomeOnboardingSection');
+            const activeContent = document.getElementById('activeDashboardContent');
+            const hasCourses = appState.courses && appState.courses.length > 0;
+
+            if (welcomeSection && activeContent) {
+                if (hasCourses) {
+                    welcomeSection.classList.add('hidden');
+                    activeContent.classList.remove('hidden');
+                } else {
+                    welcomeSection.classList.remove('hidden');
+                    activeContent.classList.add('hidden');
+                }
+            }
+
+            populateWeekDropdowns();
+            renderStatsOverview();
+            renderWeeklyScheduleGrid();
+            renderCompactCourseCards();
+            renderWeeklyTasksSection();
+            renderThemeDropdownOptions();
+
+            if (currentDashboardCourseId) {
+                renderCourseDashboardModal(currentDashboardCourseId);
+            }
+        }
+
+        function populateWeekDropdowns() {
+            const dropdown = document.getElementById('weekSelectDropdown');
+            const modalDropdown = document.getElementById('courseModalWeekSelect');
+
+            const optionsHtml = SEMESTER_WEEKS.map((w, idx) => `
+                <option value="${idx}" ${idx === appState.currentWeekIndex ? 'selected' : ''}>
+                    ${w.name} (${formatShortDate(w.startDate)} - ${formatShortDate(w.endDate)})
+                </option>
+            `).join('');
+
+            if (dropdown) dropdown.innerHTML = optionsHtml;
+            if (modalDropdown) {
+                const modalOptions = SEMESTER_WEEKS.map((w, idx) => `
+                    <option value="${idx}" ${idx === appState.courseModalWeekIndex ? 'selected' : ''}>
+                        ${w.name}
+                    </option>
+                `).join('');
+                modalDropdown.innerHTML = modalOptions;
+            }
+
+            const rangeSubtitle = document.getElementById('weekDateRangeSubtitle');
+            if (rangeSubtitle && SEMESTER_WEEKS[appState.currentWeekIndex]) {
+                const currentWeek = SEMESTER_WEEKS[appState.currentWeekIndex];
+                rangeSubtitle.textContent = `תאריכים: ${formatDateHebrew(currentWeek.startDate)} - ${formatDateHebrew(currentWeek.endDate)}`;
+            }
+        }
+
+        function renderStatsOverview() {
+            const activeCoursesEl = document.getElementById('statActiveCourses');
+            if (activeCoursesEl) {
+                activeCoursesEl.textContent = appState.courses.length;
+            }
+
+            let allMeetings = [];
+            let allAssignments = [];
+
+            appState.courses.forEach(course => {
+                course.assignments.forEach(a => {
+                    allAssignments.push({ ...a, courseName: course.name, courseId: course.id });
+                });
+
+                course.meetings.forEach(m => {
+                    allMeetings.push({ ...m, courseName: course.name, courseColor: course.color, courseId: course.id });
+                });
+            });
+
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+
+            const upcomingMeetings = allMeetings
+                .filter(m => {
+                    if (m.completed) return false;
+                    const mDate = new Date(`${m.date}T${m.time || '00:00'}`);
+                    return mDate > now;
+                })
+                .sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
+
+            const nextM = upcomingMeetings[0];
+            const nextMeetingTitleEl = document.getElementById('statNextMeetingTitle');
+            const nextMeetingSubEl = document.getElementById('statNextMeetingSub');
+
+            if (nextM) {
+                if (nextMeetingTitleEl) nextMeetingTitleEl.textContent = `${nextM.courseName}: ${nextM.title}`;
+                if (nextMeetingSubEl) nextMeetingSubEl.textContent = `${formatDateHebrew(nextM.date)} בשעה ${formatMeetingTime(nextM)}`;
+            } else {
+                if (nextMeetingTitleEl) nextMeetingTitleEl.textContent = 'אין מפגשים קרובים';
+                if (nextMeetingSubEl) nextMeetingSubEl.textContent = '--';
+            }
+
+            const upcomingAssignments = allAssignments
+                .filter(a => !a.completed && a.date >= todayStr)
+                .sort((a, b) => a.date.localeCompare(b.date));
+
+            const nextA = upcomingAssignments[0];
+            const nextAssignmentTitleEl = document.getElementById('statNextAssignmentTitle');
+            const nextAssignmentSubEl = document.getElementById('statNextAssignmentSub');
+
+            if (nextA) {
+                if (nextAssignmentTitleEl) nextAssignmentTitleEl.textContent = `${nextA.courseName}: ${nextA.title}`;
+                if (nextAssignmentSubEl) nextAssignmentSubEl.textContent = `לתאריך ${formatDateHebrew(nextA.date)} (${nextA.points} נק')`;
+            } else {
+                if (nextAssignmentTitleEl) nextAssignmentTitleEl.textContent = 'אין מטלות קרובות';
+                if (nextAssignmentSubEl) nextAssignmentSubEl.textContent = '--';
+            }
+        }
+
+        function renderWeeklyScheduleGrid() {
+            const grid = document.getElementById('weeklyDayGrid');
+            if (!grid) return;
+
+            const currentWeek = SEMESTER_WEEKS[appState.currentWeekIndex];
+            const startDate = new Date(currentWeek.startDate);
+            const todayStr = new Date().toISOString().split('T')[0];
+            const now = new Date();
+
+            let columnsHtml = '';
+
+            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                const currentDate = new Date(startDate);
+                currentDate.setDate(startDate.getDate() + dayOffset);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayName = HEBREW_DAYS[dayOffset];
+                const isToday = (dateStr === todayStr);
+
+                let dayAssignments = [];
+                let dayMeetings = [];
+
+                appState.courses.forEach(course => {
+                    course.assignments.forEach(a => {
+                        if (a.date === dateStr) {
+                            dayAssignments.push({ ...a, courseName: course.name, color: course.color, courseId: course.id });
+                        }
+                    });
+
+                    course.meetings.forEach(m => {
+                        if (m.date === dateStr) {
+                            dayMeetings.push({ ...m, courseName: course.name, color: course.color, courseId: course.id });
+                        }
+                    });
+                });
+
+                dayMeetings.sort((a, b) => a.time.localeCompare(b.time));
+
+                columnsHtml += `
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-2 min-h-[300px] flex flex-col justify-between ${isToday ? 'day-column-today' : ''}">
+                        <div class="text-center pb-2 border-b border-slate-800 mb-2">
+                            <span class="block text-xs font-extrabold ${isToday ? 'text-brand-400' : 'text-slate-300'}">${dayName}</span>
+                            <span class="block text-[10px] text-slate-400 font-mono">${formatShortDate(dateStr)}</span>
+                        </div>
+
+                        <div class="flex-1 flex flex-col justify-between space-y-2">
+                            <!-- LEVEL 1: ASSIGNMENTS (FIXED LEVEL HEIGHT FOR EVEN ALIGNMENT) -->
+                            <div class="h-[110px] overflow-y-auto space-y-1">
+                                <div class="text-[9px] font-extrabold text-rose-400/80 uppercase tracking-wider pb-0.5 border-b border-slate-800/60 flex items-center justify-between sticky top-0 bg-slate-900/90 backdrop-blur-sm z-10">
+                                    <span>מטלות</span>
+                                    <span class="text-[8px] bg-rose-950/80 px-1 rounded text-rose-300">${dayAssignments.length}</span>
+                                </div>
+                                ${dayAssignments.map(a => `
+                                    <div onclick="toggleAssignmentStatus('${a.id}')" class="p-1.5 rounded-lg ${a.completed ? 'bg-emerald-950/60 border-emerald-800/80 hover:border-emerald-500' : 'bg-rose-950/60 border-rose-800/80 hover:border-rose-500'} border cursor-pointer transition-all text-right">
+                                        <div class="flex items-start justify-between gap-1 text-[10px] font-bold ${a.completed ? 'text-emerald-300' : 'text-rose-300'}">
+                                            <span class="break-words leading-tight" style="color: ${a.color}">${a.courseName}</span>
+                                            <i class="fa-solid ${a.completed ? 'fa-circle-check text-emerald-400' : 'fa-circle-notch text-rose-400'} shrink-0 mt-0.5"></i>
+                                        </div>
+                                        <div class="text-[11px] font-extrabold text-white mt-1 ${a.completed ? 'line-through text-slate-400' : ''}">${a.title}</div>
+                                        <div class="text-[9px] ${a.completed ? 'text-emerald-400/90' : 'text-rose-400/90'} font-medium mt-0.5">${a.points} נקודות חובה</div>
+                                    </div>
+                                `).join('')}
+                                ${dayAssignments.length === 0 ? `
+                                    <div class="text-[9px] text-slate-600 text-center py-2">אין מטלות</div>
+                                ` : ''}
+                            </div>
+
+                            <!-- LEVEL 2: MEETINGS (ALWAYS STARTS AT EXACT SAME HEIGHT ACROSS ALL DAYS) -->
+                            <div class="h-[150px] overflow-y-auto space-y-1 pt-2 border-t border-slate-800/80">
+                                <div class="text-[9px] font-extrabold text-brand-400/80 uppercase tracking-wider pb-0.5 border-b border-slate-800/60 flex items-center justify-between sticky top-0 bg-slate-900/90 backdrop-blur-sm z-10">
+                                    <span>מפגשים</span>
+                                    <span class="text-[8px] bg-slate-800 px-1 rounded text-brand-300">${dayMeetings.length}</span>
+                                </div>
+                                ${dayMeetings.map(m => {
+                                    const meetingStart = new Date(`${m.date}T${m.time || '00:00'}`);
+                                    const isPassed = meetingStart <= now;
+
+                                    let statusIconHtml = '';
+                                    if (m.completed) {
+                                        statusIconHtml = `<i class="fa-solid fa-user-check text-emerald-400 text-xs" title="נכחתי"></i>`;
+                                    } else if (isPassed) {
+                                        statusIconHtml = `<i class="fa-solid fa-user-xmark text-rose-400 text-xs" title="נעדרתי"></i>`;
+                                    } else {
+                                        statusIconHtml = `<i class="fa-regular fa-clock text-slate-500 text-xs" title="עתידי"></i>`;
+                                    }
+
+                                    return `
+                                        <div onclick="toggleMeetingAttendance('${m.id}')" class="p-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 hover:border-slate-500 transition-all text-right cursor-pointer">
+                                            <div class="flex items-start justify-between gap-1 text-[10px] font-bold text-slate-300">
+                                                <span class="break-words leading-tight" style="color: ${m.color}">${m.courseName}</span>
+                                                <span class="text-[9px] font-mono bg-slate-950/60 px-1 py-0.5 rounded text-amber-300 shrink-0">${formatMeetingTime(m)}</span>
+                                            </div>
+                                            <div class="text-[11px] font-bold text-white mt-1 flex items-center justify-between gap-1">
+                                                <span class="${m.completed ? 'text-brand-400' : ''} break-words leading-tight">${m.title}</span>
+                                                ${statusIconHtml}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                                ${dayMeetings.length === 0 ? `
+                                    <div class="text-[9px] text-slate-600 text-center py-2">אין מפגשים</div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = columnsHtml;
+        }
+
+        function renderCompactCourseCards() {
+            const container = document.getElementById('courseCardsGrid');
+            if (!container) return;
+
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+
+            container.innerHTML = appState.courses.map(course => {
+                sortCourseItems(course);
+                const pace = getCourseLearningPace(course);
+
+                const totalUnits = course.units.length;
+                const completedUnits = course.units.filter(u => u.completed).length;
+                const unitPct = totalUnits > 0 ? Math.round((completedUnits / totalUnits) * 100) : 0;
+
+                const submittedPoints = course.assignments
+                    .filter(a => a.completed)
+                    .reduce((sum, a) => sum + (a.points || 0), 0);
+                const minPoints = course.minRequiredPoints || 15;
+                const pointsPct = Math.min(100, Math.round((submittedPoints / minPoints) * 100));
+
+                const upcomingMeetings = course.meetings
+                    .filter(m => !m.completed && new Date(`${m.date}T${m.time || '00:00'}`) > now)
+                    .sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
+                const nextMeeting = upcomingMeetings[0];
+
+                const upcomingAssignments = course.assignments
+                    .filter(a => !a.completed && a.date >= todayStr)
+                    .sort((a, b) => a.date.localeCompare(b.date));
+                const nextAssignment = upcomingAssignments[0];
+
+                const firstUncompletedUnit = (course.units || []).find(u => !u.completed);
+                const currentUnitText = firstUncompletedUnit
+                    ? firstUncompletedUnit.title
+                    : ((course.units && course.units.length > 0) ? 'הושלם הכל' : 'אין');
+
+                let paceColorClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+                if (pace.status === 'LAG') paceColorClass = 'bg-rose-500/20 text-rose-400 border-rose-500/30';
+                if (pace.status === 'AHEAD') paceColorClass = 'bg-indigo-500/20 text-indigo-400 border-indigo-500/30';
+
+                return `
+                    <div class="glass-card rounded-2xl p-4 flex flex-col justify-between hover:border-slate-700 transition-all">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-3.5 h-8 rounded-full" style="background-color: ${course.color}"></div>
+                                    <div>
+                                        <h3 class="text-xs font-extrabold text-white leading-tight">${course.name}</h3>
+                                        <span class="text-[10px] text-slate-400">${course.code || 'קוד קורס'}</span>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] font-bold px-2 py-0.5 rounded border ${paceColorClass}">
+                                    ${pace.text}
+                                </span>
+                            </div>
+
+                            <div class="space-y-3 my-3">
+                                <div>
+                                    <div class="flex justify-between text-[10px] text-slate-300 font-bold mb-1">
+                                        <span>התקדמות ביחידות לימוד</span>
+                                        <span class="text-brand-400">${completedUnits}/${totalUnits} (${unitPct}%)</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-brand-500 h-full rounded-full" style="width: ${unitPct}%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-[10px] text-slate-300 font-bold mb-1">
+                                        <span>נקודות חובה שהוגשו</span>
+                                        <span class="text-amber-400">${submittedPoints}/${minPoints} נק'</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-amber-500 h-full rounded-full" style="width: ${pointsPct}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-900/80 rounded-xl p-2.5 border border-slate-800 space-y-1.5 text-[10px]">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="text-slate-400 shrink-0"><i class="fa-solid fa-book-open text-brand-400 ml-1"></i>יחידת לימוד נוכחית:</span>
+                                    <span class="font-bold text-slate-200 truncate" title="${currentUnitText}">${currentUnitText}</span>
+                                </div>
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="text-slate-400 shrink-0"><i class="fa-solid fa-clock text-amber-400 ml-1"></i>מפגש הבא:</span>
+                                    <span class="font-bold text-slate-200 truncate">${nextMeeting ? `${nextMeeting.title} (${formatShortDate(nextMeeting.date)})` : 'אין'}</span>
+                                </div>
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="text-slate-400 shrink-0"><i class="fa-solid fa-hourglass-half text-rose-400 ml-1"></i>מטלה הבאה:</span>
+                                    <span class="font-bold text-slate-200 truncate">${nextAssignment ? `${nextAssignment.title} (${formatShortDate(nextAssignment.date)})` : 'אין'}</span>
+                                </div>
+                            </div>
+
+                            ${(course.links && course.links.length > 0) ? `
+                                <div class="flex items-center gap-1.5 flex-wrap mt-2.5 pt-2 border-t border-slate-800/80">
+                                    ${course.links.map(l => `
+                                        <a href="${l.url}" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 hover:text-brand-300 text-[10px] font-semibold border border-slate-700 transition-colors truncate max-w-[130px]" title="${l.title}">
+                                            <i class="fa-solid ${l.icon || 'fa-globe'} text-[9px]"></i>
+                                            <span class="truncate">${l.title}</span>
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <button onclick="openCourseDashboardModal('${course.id}')" class="mt-4 w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 transition-colors flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-gauge-high text-brand-400"></i>
+                            <span>פתח דף קורס</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- DEDICATED COURSE DASHBOARD MODAL LOGIC ---
+        function openCourseDashboardModal(courseId) {
+            currentDashboardCourseId = courseId;
+            const container = document.getElementById('courseModalContainer');
+            if (container) container.classList.remove('hidden');
+            renderCourseDashboardModal(courseId);
+        }
+
+        function closeCourseDashboardModal() {
+            currentDashboardCourseId = null;
+            const container = document.getElementById('courseModalContainer');
+            if (container) container.classList.add('hidden');
+        }
+
+        function renderCourseDashboardModal(courseId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            document.getElementById('cdashCourseName').textContent = course.name;
+            document.getElementById('cdashCourseInstructor').innerHTML = `<i class="fa-solid fa-user-tie ml-1"></i> ${course.instructor || 'לא צוין'}`;
+            document.getElementById('cdashCourseTime').innerHTML = `<i class="fa-regular fa-clock ml-1"></i> ${course.time || 'לא צוין'}`;
+            document.getElementById('cdashCourseBadge').style.backgroundColor = course.color;
+
+            const pace = getCourseLearningPace(course);
+            const paceTag = document.getElementById('cdashPaceTag');
+            const unifiedBox = document.getElementById('cdashUnifiedUnitBox');
+
+            if (paceTag) {
+                paceTag.textContent = pace.text;
+                if (pace.status === 'LAG') {
+                    unifiedBox.className = 'p-3 rounded-xl border flex flex-col justify-between bg-rose-950/30 border-rose-800/80';
+                    paceTag.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300';
+                } else if (pace.status === 'AHEAD') {
+                    unifiedBox.className = 'p-3 rounded-xl border flex flex-col justify-between bg-indigo-950/30 border-indigo-800/80';
+                    paceTag.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300';
+                } else {
+                    unifiedBox.className = 'p-3 rounded-xl border flex flex-col justify-between bg-emerald-950/30 border-emerald-800/80';
+                    paceTag.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300';
+                }
+            }
+
+            const currentUnit = course.units.find(u => !u.completed) || course.units[course.units.length - 1];
+            const actualWeekIdx = getActualCalendarWeekIndex();
+            const currentWeekNum = SEMESTER_WEEKS[actualWeekIdx].weekNum;
+            const recUnit = course.units.filter(u => (u.startWeek || 1) <= currentWeekNum).slice(-1)[0] || course.units[0];
+
+            document.getElementById('cdashCurrentUnitTitle').textContent = currentUnit ? `${currentUnit.title} (${getUnitWeekText(currentUnit)})` : 'הושלם הכל';
+            document.getElementById('cdashRecUnitTitle').textContent = recUnit ? `${recUnit.title} (${getUnitWeekText(recUnit)})` : 'הושלם הכל';
+
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+            const submitted = course.assignments.filter(a => a.completed).length;
+            const overdue = course.assignments.filter(a => !a.completed && a.date < todayStr).length;
+            const pending = course.assignments.filter(a => !a.completed && a.date >= todayStr).length;
+            const totalAss = course.assignments.length;
+
+            document.getElementById('donutCountSubmitted').textContent = submitted;
+            document.getElementById('donutCountOverdue').textContent = overdue;
+            document.getElementById('donutCountPending').textContent = pending;
+
+            const submittedPct = totalAss > 0 ? Math.round((submitted / totalAss) * 100) : 0;
+            document.getElementById('donutCenterText').textContent = `${submittedPct}%`;
+            document.getElementById('donutSegmentSubmitted').setAttribute('stroke-dasharray', `${submittedPct}, 100`);
+
+            const attendedCount = course.meetings.filter(m => m.completed).length;
+            const missedCount = course.meetings.filter(m => !m.completed && new Date(`${m.date}T${m.time || '00:00'}`) <= now).length;
+            const upcomingMeetingCount = course.meetings.filter(m => !m.completed && new Date(`${m.date}T${m.time || '00:00'}`) > now).length;
+            const totalMeetings = course.meetings.length;
+
+            document.getElementById('donutCountAttended').textContent = attendedCount;
+            document.getElementById('donutCountMissed').textContent = missedCount;
+            document.getElementById('donutCountUpcomingMeetings').textContent = upcomingMeetingCount;
+
+            const attendedPct = totalMeetings > 0 ? Math.round((attendedCount / totalMeetings) * 100) : 0;
+            document.getElementById('donutAttendedCenterText').textContent = `${attendedPct}%`;
+            document.getElementById('donutSegmentAttended').setAttribute('stroke-dasharray', `${attendedPct}, 100`);
+
+            const submittedPoints = course.assignments.filter(a => a.completed).reduce((sum, a) => sum + (a.points || 0), 0);
+            const minPoints = course.minRequiredPoints || 15;
+            const pointsPct = Math.min(100, Math.round((submittedPoints / minPoints) * 100));
+
+            document.getElementById('cdashPointsRatioText').textContent = `${submittedPoints} / ${minPoints} נק'`;
+            document.getElementById('cdashPointsProgressBar').style.width = `${pointsPct}%`;
+
+            renderCourseModalScheduleGrid(course);
+            renderCourseUnitsList(course);
+            renderCourseAssignmentsList(course);
+            renderCourseLinksList(course);
+        }
+
+        function switchCourseTab(tabName) {
+            ['schedule', 'units', 'assignments', 'links'].forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                const content = document.getElementById(`tabContent-${t}`);
+                if (t === tabName) {
+                    btn.className = 'px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-brand-600 text-white';
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = 'px-4 py-2 text-xs font-bold rounded-t-lg transition-colors bg-slate-800 text-slate-400 hover:text-slate-200';
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        function renderCourseModalScheduleGrid(course) {
+            const grid = document.getElementById('courseModalDayGrid');
+            if (!grid) return;
+
+            const currentWeek = SEMESTER_WEEKS[appState.courseModalWeekIndex];
+            const startDate = new Date(currentWeek.startDate);
+            const todayStr = new Date().toISOString().split('T')[0];
+            const now = new Date();
+
+            let html = '';
+            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                const currentDate = new Date(startDate);
+                currentDate.setDate(startDate.getDate() + dayOffset);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                const dayName = HEBREW_DAYS[dayOffset];
+                const isToday = (dateStr === todayStr);
+
+                const dayAssignments = course.assignments.filter(a => a.date === dateStr);
+                const dayMeetings = course.meetings.filter(m => m.date === dateStr);
+                dayMeetings.sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+
+                html += `
+                    <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-2 min-h-[260px] flex flex-col justify-between ${isToday ? 'day-column-today' : ''}">
+                        <div class="text-center pb-1.5 border-b border-slate-800 mb-1.5">
+                            <span class="block text-[11px] font-bold ${isToday ? 'text-brand-400' : 'text-slate-300'}">${dayName}</span>
+                            <span class="block text-[9px] text-slate-400 font-mono">${formatShortDate(dateStr)}</span>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between space-y-2">
+                            <!-- LEVEL 1: ASSIGNMENTS -->
+                            <div class="h-[90px] overflow-y-auto space-y-1">
+                                <div class="text-[8px] font-bold text-rose-400/80 uppercase tracking-wider pb-0.5 border-b border-slate-800/60 sticky top-0 bg-slate-900/90 z-10">מטלות</div>
+                                ${dayAssignments.map(a => `
+                                    <div onclick="toggleAssignmentStatus('${a.id}')" class="p-1 rounded ${a.completed ? 'bg-emerald-950/60 border-emerald-800/80 hover:border-emerald-500' : 'bg-rose-950/60 border-rose-800/80 hover:border-rose-500'} border text-[10px] text-right cursor-pointer">
+                                        <div class="font-bold ${a.completed ? 'text-emerald-300' : 'text-rose-300'} truncate ${a.completed ? 'line-through text-slate-400' : ''}">${a.title}</div>
+                                        <div class="text-[9px] text-slate-400">${a.points} נק'</div>
+                                    </div>
+                                `).join('')}
+                                ${dayAssignments.length === 0 ? `
+                                    <div class="text-[8px] text-slate-600 text-center py-1">אין</div>
+                                ` : ''}
+                            </div>
+
+                            <!-- LEVEL 2: MEETINGS -->
+                            <div class="h-[130px] overflow-y-auto space-y-1 pt-1.5 border-t border-slate-800/80">
+                                <div class="text-[8px] font-bold text-brand-400/80 uppercase tracking-wider pb-0.5 border-b border-slate-800/60 sticky top-0 bg-slate-900/90 z-10">מפגשים</div>
+                                ${dayMeetings.map(m => {
+                                    const meetingStart = new Date(`${m.date}T${m.time || '00:00'}`);
+                                    const isPassed = meetingStart <= now;
+
+                                    let statusIcon = '';
+                                    if (m.completed) {
+                                        statusIcon = `<i class="fa-solid fa-user-check text-emerald-400 text-xs" title="נכחתי"></i>`;
+                                    } else if (isPassed) {
+                                        statusIcon = `<i class="fa-solid fa-user-xmark text-rose-400 text-xs" title="נעדרתי"></i>`;
+                                    } else {
+                                        statusIcon = `<i class="fa-regular fa-clock text-slate-500 text-xs" title="עתידי"></i>`;
+                                    }
+
+                                    return `
+                                        <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/80 text-[10px] text-right relative group">
+                                            <div onclick="toggleMeetingAttendance('${m.id}')" class="cursor-pointer">
+                                                <div class="font-bold text-white truncate flex items-center justify-between gap-1">
+                                                    <span class="${m.completed ? 'text-brand-400' : ''} truncate">${m.title}</span>
+                                                    ${statusIcon}
+                                                </div>
+                                                <div class="text-[9px] text-amber-300 font-mono mt-0.5">${formatMeetingTime(m)}</div>
+                                            </div>
+                                            <div class="flex items-center justify-end gap-1 mt-1 pt-0.5 border-t border-slate-700/40">
+                                                <button onclick="event.stopPropagation(); openItemEditModal('${course.id}', 'meeting', '${m.id}')" class="p-0.5 text-slate-400 hover:text-brand-400 text-[9px]" title="ערוך"><i class="fa-solid fa-pen"></i></button>
+                                                <button onclick="event.stopPropagation(); deleteItem('${course.id}', 'meeting', '${m.id}')" class="p-0.5 text-slate-400 hover:text-rose-400 text-[9px]" title="מחק"><i class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                                ${dayMeetings.length === 0 ? `
+                                    <div class="text-[8px] text-slate-600 text-center py-1">אין</div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function renderCourseUnitsList(course) {
+            const list = document.getElementById('cdashUnitsList');
+            if (!list) return;
+
+            sortCourseItems(course);
+            const total = course.units.length;
+            const completed = course.units.filter(u => u.completed).length;
+            document.getElementById('cdashUnitsRatio').textContent = `${completed}/${total} הושלמו`;
+
+            const firstUncompletedIdx = course.units.findIndex(u => !u.completed);
+
+            list.innerHTML = course.units.map((unit, idx) => {
+                let statusBadgeHtml = '';
+                if (unit.completed) {
+                    statusBadgeHtml = `<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">הושלם</span>`;
+                } else if (idx === firstUncompletedIdx) {
+                    statusBadgeHtml = `<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">בתהליך</span>`;
+                }
+
+                return `
+                    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-brand-500/50 flex items-center justify-between transition-all">
+                        <div class="flex items-center gap-3 cursor-pointer" onclick="toggleUnitStatus('${course.id}', '${unit.id}')">
+                            <input type="checkbox" ${unit.completed ? 'checked' : ''} class="w-4 h-4 rounded text-brand-600 focus:ring-0 cursor-pointer">
+                            <div>
+                                <h4 class="text-xs font-bold ${unit.completed ? 'line-through text-slate-400' : 'text-white'}">${unit.title}</h4>
+                                <span class="text-[10px] text-slate-400">מומלץ: ${getUnitWeekText(unit)}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            ${statusBadgeHtml}
+                            <button onclick="openItemEditModal('${course.id}', 'unit', '${unit.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold border border-slate-700 flex items-center gap-1">
+                                <i class="fa-solid fa-pen text-[10px]"></i>
+                                <span>ערוך</span>
+                            </button>
+                            <button onclick="deleteItem('${course.id}', 'unit', '${unit.id}')" class="px-2 py-1 rounded bg-rose-950/80 hover:bg-rose-900 text-rose-300 text-xs font-bold border border-rose-800/80 flex items-center gap-1">
+                                <i class="fa-solid fa-trash text-[10px]"></i>
+                                <span>מחק</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCourseAssignmentsList(course) {
+            const list = document.getElementById('cdashAssignmentsList');
+            if (!list) return;
+
+            sortCourseItems(course);
+            let totalGradedPoints = 0;
+            let weightedSum = 0;
+
+            list.innerHTML = course.assignments.map(a => {
+                if (a.completed && a.grade !== null && a.grade !== undefined) {
+                    totalGradedPoints += (a.points || 0);
+                    weightedSum += (a.grade * (a.points || 0));
+                }
+
+                return `
+                    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 cursor-pointer" onclick="toggleAssignmentStatus('${a.id}')">
+                            <input type="checkbox" ${a.completed ? 'checked' : ''} class="w-4 h-4 rounded text-brand-600 cursor-pointer">
+                            <div>
+                                <h4 class="text-xs font-bold ${a.completed ? 'line-through text-slate-400' : 'text-white'}">${a.title}</h4>
+                                <span class="text-[10px] text-slate-400">תאריך הגשה: ${formatDateHebrew(a.date)}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2.5 w-full sm:w-auto justify-between sm:justify-end">
+                            <div class="text-xs font-bold text-amber-400 bg-slate-900 px-2.5 py-1 rounded border border-slate-800">
+                                ${a.points || 0} נק'
+                            </div>
+
+                            <div class="flex items-center gap-1">
+                                <span class="text-[10px] text-slate-400">ציון:</span>
+                                <input type="number" min="0" max="100" placeholder="0-100" value="${a.grade !== null && a.grade !== undefined ? a.grade : ''}" onchange="updateAssignmentGrade('${course.id}', '${a.id}', this.value)" class="w-16 bg-slate-900 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-emerald-400 font-bold text-center">
+                            </div>
+
+                            <button onclick="openItemEditModal('${course.id}', 'assignment', '${a.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold border border-slate-700 flex items-center gap-1">
+                                <i class="fa-solid fa-pen text-[10px]"></i>
+                                <span>ערוך</span>
+                            </button>
+                            <button onclick="deleteItem('${course.id}', 'assignment', '${a.id}')" class="px-2 py-1 rounded bg-rose-950/80 hover:bg-rose-900 text-rose-300 text-xs font-bold border border-rose-800/80 flex items-center gap-1">
+                                <i class="fa-solid fa-trash text-[10px]"></i>
+                                <span>מחק</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const finalGrade = totalGradedPoints > 0 ? (weightedSum / totalGradedPoints).toFixed(1) : '--';
+            document.getElementById('cdashWeightedTotalGrade').textContent = finalGrade !== '--' ? `${finalGrade} / 100` : '--';
+        }
+
+        function renderCourseLinksList(course) {
+            const list = document.getElementById('cdashLinksList');
+            if (!list) return;
+
+            list.innerHTML = (course.links || []).map(link => `
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between">
+                    <a href="${link.url}" target="_blank" class="flex items-center gap-2.5 text-xs font-bold text-brand-400 hover:text-brand-300 truncate">
+                        <i class="fa-solid ${link.icon || 'fa-globe'} text-sm"></i>
+                        <span class="truncate">${link.title}</span>
+                    </a>
+                    <div class="flex items-center gap-1">
+                        <button onclick="openLinkModal('${course.id}', '${link.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold border border-slate-700 flex items-center gap-1">
+                            <i class="fa-solid fa-pen text-[10px]"></i>
+                            <span>ערוך</span>
+                        </button>
+                        <button onclick="deleteLink('${course.id}', '${link.id}')" class="px-2 py-1 rounded bg-rose-950/80 hover:bg-rose-900 text-rose-300 text-xs font-bold border border-rose-800/80 flex items-center gap-1">
+                            <i class="fa-solid fa-trash text-[10px]"></i>
+                            <span>מחק</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- COURSE MANAGEMENT & MODAL LOGIC ---
+        function openCourseModal(mode = 'list', courseToEdit = null) {
+            const modal = document.getElementById('manageCourseModal');
+            if (!modal) return;
+
+            modal.classList.remove('hidden');
+            renderManageCoursesList();
+
+            if (courseToEdit) {
+                editingCourseId = courseToEdit.id;
+                if (mode === 'form') {
+                    document.getElementById('manageFormHeaderTitle').textContent = 'עריכת פרטי קורס';
+                    document.getElementById('switchToJsonBtn').classList.add('hidden');
+                    document.getElementById('switchToJsonSeparator').classList.add('hidden');
+                    document.getElementById('formCourseName').value = courseToEdit.name || '';
+                    document.getElementById('formCourseCode').value = courseToEdit.code || '';
+                    document.getElementById('formCourseInstructor').value = courseToEdit.instructor || '';
+                    document.getElementById('formCourseTime').value = courseToEdit.time || '';
+                    document.getElementById('formCourseMinPoints').value = courseToEdit.minRequiredPoints !== undefined ? courseToEdit.minRequiredPoints : 15;
+                    document.getElementById('formCourseColor').value = courseToEdit.color || '#0284c7';
+                } else if (mode === 'json') {
+                    document.getElementById('singleCourseJsonTextarea').value = JSON.stringify(courseToEdit, null, 2);
+                }
+            } else {
+                editingCourseId = null;
+                document.getElementById('manageFormHeaderTitle').textContent = 'הוספת קורס חדש';
+                document.getElementById('switchToJsonBtn').classList.remove('hidden');
+                document.getElementById('switchToJsonSeparator').classList.remove('hidden');
+                document.getElementById('formCourseName').value = '';
+                document.getElementById('formCourseCode').value = '';
+                document.getElementById('formCourseInstructor').value = '';
+                document.getElementById('formCourseTime').value = '';
+                document.getElementById('formCourseMinPoints').value = 15;
+                document.getElementById('formCourseColor').value = '#0284c7';
+                document.getElementById('singleCourseJsonTextarea').value = '';
+            }
+
+            switchManageModalTab(mode);
+        }
+
+        function closeCourseModal() {
+            const modal = document.getElementById('manageCourseModal');
+            if (modal) modal.classList.add('hidden');
+            editingCourseId = null;
+        }
+
+        function switchManageModalTab(tab) {
+            const list = document.getElementById('manageViewList');
+            const form = document.getElementById('manageViewForm');
+            const json = document.getElementById('manageViewJson');
+
+            [list, form, json].forEach(el => el.classList.add('hidden'));
+
+            if (tab === 'list' || tab === 'manage') {
+                editingCourseId = null;
+                list.classList.remove('hidden');
+            } else if (tab === 'form') {
+                if (!editingCourseId) {
+                    document.getElementById('manageFormHeaderTitle').textContent = 'הוספת קורס חדש';
+                    document.getElementById('switchToJsonBtn').classList.remove('hidden');
+                    document.getElementById('switchToJsonSeparator').classList.remove('hidden');
+                    document.getElementById('formCourseName').value = '';
+                    document.getElementById('formCourseCode').value = '';
+                    document.getElementById('formCourseInstructor').value = '';
+                    document.getElementById('formCourseTime').value = '';
+                    document.getElementById('formCourseMinPoints').value = 15;
+                    document.getElementById('formCourseColor').value = '#0284c7';
+                }
+                form.classList.remove('hidden');
+            } else if (tab === 'json') {
+                json.classList.remove('hidden');
+            }
+        }
+
+        function openNewCourseFormTab() {
+            editingCourseId = null;
+            switchManageModalTab('form');
+        }
+
+        function openNewCourseJsonTab() {
+            editingCourseId = null;
+            document.getElementById('singleCourseJsonTextarea').value = '';
+            switchManageModalTab('json');
+        }
+
+        function renderManageCoursesList() {
+            const container = document.getElementById('manageCoursesListContainer');
+            if (!container) return;
+
+            if (appState.courses.length === 0) {
+                container.innerHTML = `
+                    <div class="p-6 rounded-xl bg-slate-800/40 border border-slate-800 text-center space-y-2">
+                        <p class="text-xs text-slate-400">עדיין לא הוספת קורסים למערכת.</p>
+                        <button onclick="switchManageModalTab('form')" class="text-xs text-brand-400 font-bold hover:underline">+ לחץ כאן להוספת הקורס הראשון</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = appState.courses.map(course => `
+                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between gap-2 flex-wrap">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-3 h-8 rounded-full shrink-0" style="background-color: ${course.color}"></div>
+                        <div class="min-w-0">
+                            <h4 class="text-xs font-bold text-white truncate">${course.name}</h4>
+                            <span class="text-[10px] text-slate-400 block truncate">${course.code || 'ללא קוד'}${course.instructor ? ' | ' + course.instructor : ''}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="editCourseBasicForm('${course.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-brand-400 text-xs font-bold border border-slate-700 flex items-center gap-1" title="ערוך פרטי קורס בסיסיים">
+                            <i class="fa-solid fa-pen text-[10px]"></i>
+                            <span>ערוך</span>
+                        </button>
+                        <button onclick="inspectCourseJson('${course.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold border border-slate-700 flex items-center gap-1" title="עריכה מתקדמת ב-JSON">
+                            <i class="fa-solid fa-code text-[10px]"></i>
+                            <span>JSON</span>
+                        </button>
+                        <button onclick="exportCourseJson('${course.id}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-bold border border-slate-700 flex items-center gap-1" title="יצוא קובץ JSON למחשב">
+                            <i class="fa-solid fa-download text-[10px]"></i>
+                            <span>יצוא</span>
+                        </button>
+                        <button onclick="deleteCourse('${course.id}')" class="px-2 py-1 rounded bg-rose-950/80 hover:bg-rose-900 text-rose-300 text-xs font-bold border border-rose-800/80 flex items-center gap-1" title="מחק קורס">
+                            <i class="fa-solid fa-trash text-[10px]"></i>
+                            <span>מחק</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function editCourseBasicForm(courseId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+            openCourseModal('form', course);
+        }
+
+        function exportCourseJson(courseId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            const jsonStr = JSON.stringify(course, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${course.name || 'course'}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('קובץ הקורס יורד למחשב');
+        }
+
+        function inspectCourseJson(courseId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+            openCourseModal('json', course);
+        }
+
+        function applySingleCourseJsonImport() {
+            try {
+                const text = document.getElementById('singleCourseJsonTextarea').value;
+                const newCourseData = JSON.parse(text);
+
+                if (!newCourseData.name) {
+                    showToast('שגיאה: הקורס חייב להכיל שדה name');
+                    return;
+                }
+
+                if (editingCourseId) {
+                    const idx = appState.courses.findIndex(c => c.id === editingCourseId);
+                    if (idx !== -1) {
+                        newCourseData.id = editingCourseId;
+                        sortCourseItems(newCourseData);
+                        appState.courses[idx] = newCourseData;
+                        showToast('הקורס עודכן בהצלחה');
+                    }
+                } else {
+                    newCourseData.id = newCourseData.id || ('c_' + Date.now());
+                    sortCourseItems(newCourseData);
+                    appState.courses.push(newCourseData);
+                    showToast('הקורס הוסף בהצלחה');
+                }
+
+                saveState();
+                closeCourseModal();
+            } catch (e) {
+                showToast('שגיאה בפענוח JSON: ' + e.message);
+            }
+        }
+
+        function deleteCourse(courseId) {
+            appState.courses = appState.courses.filter(c => c.id !== courseId);
+            saveState();
+            renderManageCoursesList();
+            showToast('הקורס נמחק בהצלחה');
+        }
+
+        function toggleAssignmentStatus(assignmentId) {
+            for (let course of appState.courses) {
+                const assignment = course.assignments.find(a => a.id === assignmentId);
+                if (assignment) {
+                    assignment.completed = !assignment.completed;
+                    saveState();
+                    showToast(assignment.completed ? 'המטלה סומנה כהושלמה' : 'סטטוס המטלה עודכן');
+                    return;
+                }
+            }
+        }
+
+        function toggleMeetingAttendance(meetingId) {
+            for (let course of appState.courses) {
+                const meeting = course.meetings.find(m => m.id === meetingId);
+                if (meeting) {
+                    meeting.completed = !meeting.completed;
+                    saveState();
+                    showToast(meeting.completed ? 'סומנה נוכחות במפגש' : 'סטטוס נוכחות עודכן');
+                    return;
+                }
+            }
+        }
+
+        function toggleUnitStatus(courseId, unitId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (course) {
+                const unit = course.units.find(u => u.id === unitId);
+                if (unit) {
+                    unit.completed = !unit.completed;
+                    saveState();
+                    showToast(unit.completed ? 'יחידת הלימוד סומנה כהושלמה' : 'סטטוס יחידה עודכן');
+                }
+            }
+        }
+
+        function updateAssignmentGrade(courseId, assignmentId, gradeVal) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (course) {
+                const assignment = course.assignments.find(a => a.id === assignmentId);
+                if (assignment) {
+                    const num = parseFloat(gradeVal);
+                    assignment.grade = isNaN(num) ? null : num;
+                    saveState();
+                }
+            }
+        }
+
+        // --- ITEM ADD / EDIT / DELETE MODAL LOGIC ---
+        function openItemModal(courseId, type) {
+            document.getElementById('itemCourseId').value = courseId;
+            document.getElementById('itemId').value = '';
+            document.getElementById('itemType').value = type;
+            document.getElementById('itemTitleInput').value = '';
+
+            const meetingFields = document.getElementById('itemMeetingFields');
+            const unitFields = document.getElementById('itemUnitFields');
+            const assignmentFields = document.getElementById('itemAssignmentFields');
+            const modalTitle = document.getElementById('itemModalTitle');
+
+            [meetingFields, unitFields, assignmentFields].forEach(f => f.classList.add('hidden'));
+
+            if (type === 'meeting') {
+                modalTitle.textContent = 'הוספת מפגש הנחיה';
+                meetingFields.classList.remove('hidden');
+                document.getElementById('itemMeetingDate').value = new Date().toISOString().split('T')[0];
+                document.getElementById('itemMeetingTime').value = '17:00';
+                document.getElementById('itemMeetingEndTime').value = '19:00';
+            } else if (type === 'unit') {
+                modalTitle.textContent = 'הוספת יחידת לימוד';
+                unitFields.classList.remove('hidden');
+                document.getElementById('itemUnitStartWeek').value = '1';
+                document.getElementById('itemUnitEndWeek').value = '1';
+            } else if (type === 'assignment') {
+                modalTitle.textContent = 'הוספת מטלה';
+                assignmentFields.classList.remove('hidden');
+                document.getElementById('itemAssignmentDate').value = new Date().toISOString().split('T')[0];
+                document.getElementById('itemAssignmentPoints').value = '4';
+            }
+
+            document.getElementById('itemModal').classList.remove('hidden');
+        }
+
+        function openItemEditModal(courseId, type, itemId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            document.getElementById('itemCourseId').value = courseId;
+            document.getElementById('itemId').value = itemId;
+            document.getElementById('itemType').value = type;
+
+            const meetingFields = document.getElementById('itemMeetingFields');
+            const unitFields = document.getElementById('itemUnitFields');
+            const assignmentFields = document.getElementById('itemAssignmentFields');
+            const modalTitle = document.getElementById('itemModalTitle');
+
+            [meetingFields, unitFields, assignmentFields].forEach(f => f.classList.add('hidden'));
+
+            if (type === 'meeting') {
+                const meeting = course.meetings.find(m => m.id === itemId);
+                if (!meeting) return;
+                modalTitle.textContent = 'עריכת מפגש הנחיה';
+                meetingFields.classList.remove('hidden');
+                document.getElementById('itemTitleInput').value = meeting.title;
+                document.getElementById('itemMeetingDate').value = meeting.date;
+                document.getElementById('itemMeetingTime').value = meeting.time || '17:00';
+                document.getElementById('itemMeetingEndTime').value = meeting.endTime || '19:00';
+            } else if (type === 'unit') {
+                const unit = course.units.find(u => u.id === itemId);
+                if (!unit) return;
+                modalTitle.textContent = 'עריכת יחידת לימוד';
+                unitFields.classList.remove('hidden');
+                document.getElementById('itemTitleInput').value = unit.title;
+                const start = unit.startWeek || 1;
+                const end = unit.endWeek || start;
+                document.getElementById('itemUnitStartWeek').value = start;
+                document.getElementById('itemUnitEndWeek').value = end;
+            } else if (type === 'assignment') {
+                const assignment = course.assignments.find(a => a.id === itemId);
+                if (!assignment) return;
+                modalTitle.textContent = 'עריכת מטלה';
+                assignmentFields.classList.remove('hidden');
+                document.getElementById('itemTitleInput').value = assignment.title;
+                document.getElementById('itemAssignmentDate').value = assignment.date;
+                document.getElementById('itemAssignmentPoints').value = assignment.points || 4;
+            }
+
+            document.getElementById('itemModal').classList.remove('hidden');
+        }
+
+        function closeItemModal() {
+            document.getElementById('itemModal').classList.add('hidden');
+        }
+
+        function handleSaveItem(e) {
+            e.preventDefault();
+            const courseId = document.getElementById('itemCourseId').value;
+            const itemId = document.getElementById('itemId').value;
+            const type = document.getElementById('itemType').value;
+            const title = document.getElementById('itemTitleInput').value;
+
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            if (type === 'meeting') {
+                const date = document.getElementById('itemMeetingDate').value;
+                const time = document.getElementById('itemMeetingTime').value;
+                const endTime = document.getElementById('itemMeetingEndTime').value;
+
+                if (itemId) {
+                    const m = course.meetings.find(x => x.id === itemId);
+                    if (m) {
+                        m.title = title;
+                        m.date = date;
+                        m.time = time;
+                        m.endTime = endTime;
+                    }
+                } else {
+                    course.meetings.push({
+                        id: 'm_' + Date.now(),
+                        title,
+                        date,
+                        time,
+                        endTime,
+                        completed: false
+                    });
+                }
+            } else if (type === 'unit') {
+                const startWeek = parseInt(document.getElementById('itemUnitStartWeek').value) || 1;
+                const endWeek = parseInt(document.getElementById('itemUnitEndWeek').value) || startWeek;
+                if (itemId) {
+                    const u = course.units.find(x => x.id === itemId);
+                    if (u) {
+                        u.title = title;
+                        u.startWeek = startWeek;
+                        u.endWeek = endWeek;
+                    }
+                } else {
+                    course.units.push({
+                        id: 'u_' + Date.now(),
+                        title,
+                        startWeek,
+                        endWeek,
+                        completed: false
+                    });
+                }
+            } else if (type === 'assignment') {
+                const date = document.getElementById('itemAssignmentDate').value;
+                const points = parseInt(document.getElementById('itemAssignmentPoints').value) || 0;
+                if (itemId) {
+                    const a = course.assignments.find(x => x.id === itemId);
+                    if (a) {
+                        a.title = title;
+                        a.date = date;
+                        a.points = points;
+                    }
+                } else {
+                    course.assignments.push({
+                        id: 'a_' + Date.now(),
+                        title,
+                        date,
+                        points,
+                        completed: false,
+                        grade: null
+                    });
+                }
+            }
+
+            saveState();
+            closeItemModal();
+            showToast('השינויים נשמרו בהצלחה');
+        }
+
+        function deleteItem(courseId, type, itemId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            if (type === 'meeting') {
+                course.meetings = course.meetings.filter(m => m.id !== itemId);
+            } else if (type === 'unit') {
+                course.units = course.units.filter(u => u.id !== itemId);
+            } else if (type === 'assignment') {
+                course.assignments = course.assignments.filter(a => a.id !== itemId);
+            }
+
+            saveState();
+            showToast('הפריט נמחק בהצלחה');
+        }
+
+        function openLinkModal(courseId, linkId = null) {
+            document.getElementById('linkCourseId').value = courseId;
+            document.getElementById('linkId').value = linkId || '';
+            const modalTitle = document.getElementById('linkModalTitle');
+
+            if (linkId) {
+                const course = appState.courses.find(c => c.id === courseId);
+                const link = course ? (course.links || []).find(l => l.id === linkId) : null;
+                if (link) {
+                    modalTitle.textContent = 'עריכת קישור מהיר';
+                    document.getElementById('linkTitleInput').value = link.title;
+                    document.getElementById('linkUrlInput').value = link.url;
+                    document.getElementById('linkIconInput').value = link.icon || 'fa-globe';
+                }
+            } else {
+                modalTitle.textContent = 'הוספת קישור מהיר';
+                document.getElementById('linkTitleInput').value = '';
+                document.getElementById('linkUrlInput').value = '';
+                document.getElementById('linkIconInput').value = 'fa-globe';
+            }
+
+            document.getElementById('linkModal').classList.remove('hidden');
+        }
+
+        function closeLinkModal() {
+            document.getElementById('linkModal').classList.add('hidden');
+        }
+
+        function handleSaveLink(e) {
+            e.preventDefault();
+            const courseId = document.getElementById('linkCourseId').value;
+            const linkId = document.getElementById('linkId').value;
+            const title = document.getElementById('linkTitleInput').value;
+            const url = document.getElementById('linkUrlInput').value;
+            const icon = document.getElementById('linkIconInput').value;
+
+            const course = appState.courses.find(c => c.id === courseId);
+            if (course) {
+                course.links = course.links || [];
+                if (linkId) {
+                    const link = course.links.find(l => l.id === linkId);
+                    if (link) {
+                        link.title = title;
+                        link.url = url;
+                        link.icon = icon;
+                    }
+                } else {
+                    course.links.push({ id: 'l_' + Date.now(), title, url, icon });
+                }
+                saveState();
+                closeLinkModal();
+                showToast('הקישור נשמר בהצלחה');
+            }
+        }
+
+        function deleteLink(courseId, linkId) {
+            const course = appState.courses.find(c => c.id === courseId);
+            if (course) {
+                course.links = course.links.filter(l => l.id !== linkId);
+                saveState();
+                showToast('הקישור נמחק בהצלחה');
+            }
+        }
+
+        function copySingleCourseSampleJson() {
+            const sample = {
+                name: "קורס דוגמה חדש",
+                code: "20999",
+                instructor: "ד\"ר ישראל ישראלי",
+                time: "ימי ה', 17:00 – 19:00",
+                color: "#ec4899",
+                minRequiredPoints: 15,
+                units: [
+                    { title: "יחידה 1: מבוא", startWeek: 1, endWeek: 2, completed: false }
+                ],
+                meetings: [
+                    { title: "מפגש 01", date: "2026-11-05", time: "17:00", endTime: "19:00", completed: false }
+                ],
+                assignments: [
+                    { title: "מטלה 01", date: "2026-11-20", points: 5, completed: false }
+                ]
+            };
+
+            const text = JSON.stringify(sample, null, 2);
+            document.getElementById('singleCourseJsonTextarea').value = text;
+            showToast('דוגמת JSON הועתקה לשדה!');
+        }
+
+        function handleSingleCourseFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                document.getElementById('singleCourseJsonTextarea').value = evt.target.result;
+            };
+            reader.readAsText(file);
+        }
+
+        function handleSaveCourse(e) {
+            e.preventDefault();
+            const name = document.getElementById('formCourseName').value;
+            const code = document.getElementById('formCourseCode').value;
+            const instructor = document.getElementById('formCourseInstructor').value;
+            const time = document.getElementById('formCourseTime').value;
+            const minRequiredPoints = parseInt(document.getElementById('formCourseMinPoints').value) || 15;
+            const color = document.getElementById('formCourseColor').value;
+
+            if (editingCourseId) {
+                const existing = appState.courses.find(c => c.id === editingCourseId);
+                if (existing) {
+                    existing.name = name;
+                    existing.code = code;
+                    existing.instructor = instructor;
+                    existing.time = time;
+                    existing.minRequiredPoints = minRequiredPoints;
+                    existing.color = color;
+                    saveState();
+                    closeCourseModal();
+                    showToast('פרטי הקורס עודכנו בהצלחה');
+                    return;
+                }
+            }
+
+            const newCourse = {
+                id: 'c_' + Date.now(),
+                name,
+                code,
+                instructor,
+                time,
+                color,
+                minRequiredPoints,
+                links: [],
+                units: [],
+                meetings: [],
+                assignments: []
+            };
+
+            appState.courses.push(newCourse);
+            saveState();
+            closeCourseModal();
+            showToast('הקורס נשמר בהצלחה');
+        }
+
+        function applyJsonImport() {
+            try {
+                const text = document.getElementById('jsonTextarea').value;
+                const courses = JSON.parse(text);
+                if (Array.isArray(courses)) {
+                    appState.courses = courses;
+                    saveState();
+                    closeJsonModal();
+                    showToast('הנתונים שוחזרו בהצלחה!');
+                }
+            } catch (e) {
+                showToast('שגיאה בפענוח JSON: ' + e.message);
+            }
+        }
+
+        function copyJsonToClipboard() {
+            const text = document.getElementById('jsonTextarea').value;
+            navigator.clipboard.writeText(text);
+            showToast('ה-JSON הועתק ללוח');
+        }
+
+        function openJsonModal() {
+            const modal = document.getElementById('jsonModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.getElementById('jsonTextarea').value = JSON.stringify(appState.courses, null, 2);
+            }
+        }
+
+        function closeJsonModal() {
+            const modal = document.getElementById('jsonModal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // ENTRY POINT
+        window.onload = function() {
+            const versionBadge = document.getElementById('appVersionBadge');
+            if (versionBadge) versionBadge.textContent = `v${APP_VERSION}`;
+            loadSavedState();
+            const currentWeekIdx = getActualCalendarWeekIndex();
+            appState.currentWeekIndex = currentWeekIdx;
+            appState.courseModalWeekIndex = currentWeekIdx;
+            renderAllViews();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+{
+  "id": "c_net",
+  "name": "רשתות תקשורת מחשבים",
+  "code": "20948",
+  "instructor": "חובב גזית",
+  "time": "ימי ה', 18:00 – 21:00",
+  "color": "#8b5cf6",
+  "minRequiredPoints": 12,
+  "links": [
+    {
+      "id": "l_net_1",
+      "title": "אתר הקורס",
+      "url": "https://opal.openu.ac.il/course/view.php?id=55468",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u_net_1",
+      "title": "מבוא ומושגי יסוד ברשתות תקשורת מחשבים",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u_net_2",
+      "title": "השכבה הפיזית ושכבת קישור הנתונים",
+      "startWeek": 2,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u_net_3",
+      "title": "שכבת הרשת",
+      "startWeek": 5,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u_net_4",
+      "title": "שכבת התחבורה (התובלה)",
+      "startWeek": 8,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u_net_5",
+      "title": "שכבת האפליקציה",
+      "startWeek": 11,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u_net_6",
+      "title": "רשתות אלחוטיות וסלולריות",
+      "startWeek": 13,
+      "endWeek": 13,
+      "completed": false
+    },
+    {
+      "id": "u_net_7",
+      "title": "אבטחת רשתות תקשורת",
+      "startWeek": 14,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m_net_1",
+      "title": "מפגש 01",
+      "date": "2026-10-29",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_2",
+      "title": "מפגש 02",
+      "date": "2026-11-12",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_3",
+      "title": "מפגש 03",
+      "date": "2026-11-26",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_4",
+      "title": "מפגש 04",
+      "date": "2026-12-10",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_5",
+      "title": "מפגש 05",
+      "date": "2026-12-24",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_6",
+      "title": "מפגש 06",
+      "date": "2027-01-07",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m_net_7",
+      "title": "מפגש 07",
+      "date": "2027-01-21",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a_net_1",
+      "title": "מטלת אופ\"ל 01",
+      "date": "2026-11-02",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_net_2",
+      "title": "מטלת אופ\"ל 02",
+      "date": "2026-11-24",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_net_3",
+      "title": "מטלת אופ\"ל 03",
+      "date": "2026-12-15",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_net_4",
+      "title": "מטלת אופ\"ל 04",
+      "date": "2027-01-05",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_net_5",
+      "title": "מטלת אופ\"ל 05",
+      "date": "2027-02-02",
+      "points": 3,
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

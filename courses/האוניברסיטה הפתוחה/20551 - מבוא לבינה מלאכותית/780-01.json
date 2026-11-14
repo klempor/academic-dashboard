@@ -1,0 +1,176 @@
+{
+  "id": "c_ai",
+  "name": "מבוא לבינה מלאכותית",
+  "code": "20551",
+  "instructor": "חנה פלדמן",
+  "time": "ימי ג', 18:00 – 21:00",
+  "color": "#8b5cf6",
+  "minRequiredPoints": 14,
+  "links": [
+    {
+      "id": "l2",
+      "title": "אתר הקורס",
+      "url": "https://opal.openu.ac.il/course/view.php?id=55331",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u10",
+      "title": "חיפוש במרחב מצבים (פרק 3)",
+      "startWeek": 1,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u11",
+      "title": "יוריסטיקה וחיפוש מקומי (פרק 4)",
+      "startWeek": 4,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u12",
+      "title": "משחקי יריבות (פרק 6)",
+      "startWeek": 6,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u13",
+      "title": "CSP - בעיות סיפוק אילוצים (פרק 5)",
+      "startWeek": 8,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u14",
+      "title": "MDP - תהליכי החלטה מרקוביים (פרק 16)",
+      "startWeek": 10,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u15",
+      "title": "רשתות בייסיאניות (פרקים 12-13)",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u16",
+      "title": "למידת מכונה ועצי החלטה (פרק 19)",
+      "startWeek": 13,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m20",
+      "title": "מפגש 01",
+      "date": "2026-11-03",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m21",
+      "title": "מפגש 02",
+      "date": "2026-11-10",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m22",
+      "title": "מפגש 03",
+      "date": "2026-11-24",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m23",
+      "title": "מפגש 04",
+      "date": "2026-12-15",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m24",
+      "title": "מפגש 05",
+      "date": "2026-12-22",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m25",
+      "title": "מפגש 06",
+      "date": "2027-01-05",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    },
+    {
+      "id": "m26",
+      "title": "מפגש 07",
+      "date": "2027-01-19",
+      "time": "18:00",
+      "endTime": "21:00",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a10",
+      "title": "ממ\"ן 01 (תכנות)",
+      "date": "2026-11-19",
+      "points": 6,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a11",
+      "title": "ממ\"ן 02 (תיאורטי)",
+      "date": "2026-12-03",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a12",
+      "title": "ממ\"ן 03 (תכנות)",
+      "date": "2026-12-17",
+      "points": 6,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a13",
+      "title": "ממ\"ן 04 (תיאורטי)",
+      "date": "2026-12-31",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a14",
+      "title": "ממ\"ן 05 (תכנות)",
+      "date": "2027-01-14",
+      "points": 6,
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a15",
+      "title": "ממ\"ן 06 (תיאורטי)",
+      "date": "2027-01-28",
+      "points": 4,
+      "completed": false,
+      "grade": null
+    }
+  ]
+}
