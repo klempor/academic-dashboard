@@ -99,7 +99,7 @@
                 <div class="min-w-0">
                     <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                         <h1 class="text-sm sm:text-lg font-extrabold text-white leading-tight truncate">Academic Dashboard</h1>
-                        <span id="appVersionBadge" class="px-1.5 sm:px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800/90 text-brand-400 border border-slate-700/80 shadow-sm shrink-0" title="גרסת מערכת נוכחית (major.minor.micro)">v2.3.1</span>
+                        <span id="appVersionBadge" class="px-1.5 sm:px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-slate-800/90 text-brand-400 border border-slate-700/80 shadow-sm shrink-0" title="גרסת מערכת נוכחית (major.minor.micro)">v2.3.4</span>
                     </div>
                     <div class="text-[11px] sm:text-xs text-slate-400 flex items-center gap-x-2 gap-y-0.5 flex-wrap mt-0.5">
                         <span class="hidden md:inline">מעקב לימודים, מטלות ומועדים</span>
@@ -891,7 +891,7 @@
     <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
         // --- SYSTEM VERSION ---
-        const APP_VERSION = "2.3.1"; // Format: major.minor.micro
+        const APP_VERSION = "2.3.4"; // Format: major.minor.micro
 
         // --- CONSTANTS & SEMESTER WEEKS ---
         const STORAGE_KEY = 'academic_dashboard_state_v2';
@@ -1604,6 +1604,27 @@
             }
         }
 
+        function formatAssignmentDeadlineBadge(a) {
+            const pointsPart = `${a.points || 0} נק'`;
+            const datePart = formatShortDate(a.date);
+
+            if (a.isOverdue) {
+                const overdueDays = Math.abs(a.daysRemaining);
+                const overdueText = overdueDays === 1 ? 'עבר המועד אתמול' : `עבר המועד לפני ${overdueDays} ימים`;
+                return `${overdueText} • ${datePart} (${pointsPart})`;
+            }
+            if (a.daysRemaining === 0) {
+                return `להגשה היום! • ${datePart} (${pointsPart})`;
+            }
+            if (a.daysRemaining === 1) {
+                return `להגשה מחר • ${datePart} (${pointsPart})`;
+            }
+            if (a.daysRemaining === 2) {
+                return `עוד יומיים • ${datePart} (${pointsPart})`;
+            }
+            return `עוד ${a.daysRemaining} ימים • ${datePart} (${pointsPart})`;
+        }
+
         function renderWeeklyTasksSection() {
             applyWeeklyTasksCollapseUI();
 
@@ -1635,12 +1656,16 @@
 
                 (course.assignments || []).forEach(a => {
                     if (!a.completed && a.date <= sevenDaysStr) {
+                        const dueDate = parseLocalDate(a.date);
+                        dueDate.setHours(0, 0, 0, 0);
+                        const diffDays = Math.round((dueDate - today) / (1000 * 60 * 60 * 24));
                         upcomingAssignments.push({
                             ...a,
                             courseId: course.id,
                             courseName: course.name,
                             color: course.color,
-                            isOverdue: a.date < todayStr
+                            isOverdue: a.date < todayStr,
+                            daysRemaining: diffDays
                         });
                     }
                 });
@@ -1680,27 +1705,38 @@
                                 <span class="text-xs font-bold text-white truncate block">${u.title}</span>
                             </div>
                         </div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 shrink-0">איחור של ${u.lagWeeks} שב'</span>
+                        <div class="flex items-center gap-1.5 shrink-0 flex-wrap justify-end">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800/90 text-slate-300 border border-slate-700/80">${getUnitWeekText(u)}</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">איחור של ${u.lagWeeks} שב'</span>
+                        </div>
                     </div>
                 `).join('');
 
             const assListEl = document.getElementById('tasksListUpcomingAssignments');
             assListEl.innerHTML = upcomingAssignments.length === 0
                 ? `<div class="text-[11px] text-slate-500 py-1">אין מטלות להגשה ב-7 הימים הקרובים.</div>`
-                : upcomingAssignments.map(a => `
-                    <div onclick="toggleAssignmentStatus('${a.id}')" class="p-2.5 rounded-xl ${a.isOverdue ? 'bg-rose-950/30 border-rose-800/50' : 'bg-amber-950/25 border-amber-800/40'} border hover:border-amber-400/70 flex items-center justify-between gap-2 cursor-pointer transition-all">
-                        <div class="flex items-center gap-2.5 min-w-0">
-                            <input type="checkbox" class="w-3.5 h-3.5 rounded text-amber-500 cursor-pointer shrink-0">
-                            <div class="min-w-0">
-                                <span class="text-[10px] font-bold block" style="color: ${a.color}">${a.courseName}</span>
-                                <span class="text-xs font-bold text-white truncate block">${a.title}</span>
+                : upcomingAssignments.map(a => {
+                    const isUrgentTodayOrTomorrow = !a.isOverdue && a.daysRemaining <= 1;
+                    const badgeClass = a.isOverdue
+                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                        : isUrgentTodayOrTomorrow
+                            ? 'bg-orange-500/25 text-orange-200 border border-orange-400/40'
+                            : 'bg-amber-500/20 text-amber-300';
+                    return `
+                        <div onclick="toggleAssignmentStatus('${a.id}')" class="p-2.5 rounded-xl ${a.isOverdue ? 'bg-rose-950/30 border-rose-800/50' : 'bg-amber-950/25 border-amber-800/40'} border hover:border-amber-400/70 flex items-center justify-between gap-2 cursor-pointer transition-all">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <input type="checkbox" class="w-3.5 h-3.5 rounded text-amber-500 cursor-pointer shrink-0">
+                                <div class="min-w-0">
+                                    <span class="text-[10px] font-bold block" style="color: ${a.color}">${a.courseName}</span>
+                                    <span class="text-xs font-bold text-white truncate block">${a.title}</span>
+                                </div>
                             </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded ${badgeClass} shrink-0">
+                                ${formatAssignmentDeadlineBadge(a)}
+                            </span>
                         </div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded ${a.isOverdue ? 'bg-rose-500/20 text-rose-300' : 'bg-amber-500/20 text-amber-300'} shrink-0">
-                            ${a.isOverdue ? 'עבר המועד: ' : 'עד '}${formatShortDate(a.date)} (${a.points || 0} נק')
-                        </span>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
 
             const endListEl = document.getElementById('tasksListEndingUnits');
             endListEl.innerHTML = endingUnits.length === 0
