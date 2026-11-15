@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 460" width="820" height="460" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Main Canvas -->
+  <rect width="820" height="460" rx="20" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Top Navigation Bar -->
+  <rect x="0" y="0" width="820" height="52" rx="20" fill="#1e293b"/>
+  <rect x="0" y="26" width="820" height="26" fill="#1e293b"/>
+  <line x1="0" y1="52" x2="820" y2="52" stroke="#334155"/>
+
+  <text x="796" y="31" text-anchor="end" fill="#ffffff" font-size="14" font-weight="800">🎓 Academic Dashboard</text>
+  <rect x="605" y="16" width="44" height="19" rx="9" fill="#0f172a" stroke="#475569"/>
+  <text x="627" y="29" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">v2.3.8</text>
+
+  <!-- Navbar Buttons -->
+  <rect x="24" y="13" width="96" height="26" rx="7" fill="#0284c7"/>
+  <text x="72" y="30" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">ניהול קורסים</text>
+
+  <rect x="128" y="13" width="128" height="26" rx="7" fill="#065f46" fill-opacity="0.45" stroke="#10b981" stroke-opacity="0.5"/>
+  <text x="192" y="30" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="700">🔗 העתקת לינק לסנכרון</text>
+
+  <rect x="264" y="13" width="102" height="26" rx="7" fill="#334155"/>
+  <text x="315" y="30" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="700">🎨 התאמה אישית</text>
+
+  <!-- Row 1: 3 Top Stat Cards -->
+  <!-- Card Right: Active Courses -->
+  <rect x="556" y="68" width="240" height="64" rx="14" fill="#1e293b" stroke="#334155"/>
+  <rect x="742" y="81" width="38" height="38" rx="10" fill="#0ea5e9" fill-opacity="0.15"/>
+  <text x="761" y="106" text-anchor="middle" fill="#38bdf8" font-size="17">📚</text>
+  <text x="730" y="94" text-anchor="end" fill="#94a3b8" font-size="11">קורסים פעילים</text>
+  <text x="730" y="118" text-anchor="end" fill="#ffffff" font-size="20" font-weight="800">2</text>
+
+  <!-- Card Middle: Next Meeting -->
+  <rect x="290" y="68" width="250" height="64" rx="14" fill="#1e293b" stroke="#334155"/>
+  <rect x="486" y="81" width="38" height="38" rx="10" fill="#f59e0b" fill-opacity="0.15"/>
+  <text x="505" y="106" text-anchor="middle" fill="#fbbf24" font-size="17">⏰</text>
+  <text x="474" y="92" text-anchor="end" fill="#94a3b8" font-size="11">המפגש הקרוב</text>
+  <text x="474" y="108" text-anchor="end" fill="#ffffff" font-size="11.5" font-weight="800">מבני נתונים - מפגש 02</text>
+  <text x="474" y="122" text-anchor="end" fill="#fbbf24" font-size="10.5">08/11/2026 | 16:45-18:45</text>
+
+  <!-- Card Left: Next Assignment -->
+  <rect x="24" y="68" width="250" height="64" rx="14" fill="#1e293b" stroke="#334155"/>
+  <rect x="220" y="81" width="38" height="38" rx="10" fill="#f43f5e" fill-opacity="0.15"/>
+  <text x="239" y="106" text-anchor="middle" fill="#fb7185" font-size="17">⏳</text>
+  <text x="208" y="92" text-anchor="end" fill="#94a3b8" font-size="11">המטלה הקרובה</text>
+  <text x="208" y="108" text-anchor="end" fill="#ffffff" font-size="11.5" font-weight="800">הסתברות - ממ"ן 11</text>
+  <text x="208" y="122" text-anchor="end" fill="#fb7185" font-size="10.5">להגשה עד 12/11/2026 (5 נק')</text>
+
+  <!-- Row 2: Smart Weekly Tasks Bar -->
+  <rect x="24" y="146" width="772" height="54" rx="14" fill="#1e293b" stroke="#334155"/>
+  <rect x="742" y="155" width="36" height="36" rx="10" fill="#0ea5e9" fill-opacity="0.15"/>
+  <text x="760" y="179" text-anchor="middle" fill="#38bdf8" font-size="16">📋</text>
+  <text x="730" y="170" text-anchor="end" fill="#ffffff" font-size="13.5" font-weight="800">המשימות שלך לשבוע הקרוב</text>
+  <text x="730" y="188" text-anchor="end" fill="#94a3b8" font-size="11">בפיגור: 0 • מטלות השבוע: 1 • יחידות לסיום השבוע: 2</text>
+  <rect x="40" y="161" width="24" height="24" rx="6" fill="#0f172a" stroke="#334155"/>
+  <text x="52" y="177" text-anchor="middle" fill="#cbd5e1" font-size="11">▼</text>
+
+  <!-- Row 3: Unified Weekly Schedule -->
+  <rect x="24" y="214" width="772" height="126" rx="14" fill="#1e293b" stroke="#334155"/>
+  <text x="776" y="238" text-anchor="end" fill="#ffffff" font-size="13.5" font-weight="800">📅 לו"ז שבועי מאוחד לכל הקורסים</text>
+  <rect x="40" y="222" width="130" height="22" rx="6" fill="#0f172a" stroke="#334155"/>
+  <text x="105" y="237" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-weight="700">שבוע 3: 08/11 - 14/11</text>
+
+  <!-- Sample Day Columns inside Schedule -->
+  <rect x="650" y="252" width="126" height="76" rx="9" fill="#0f172a" stroke="#0ea5e9" stroke-opacity="0.6"/>
+  <text x="713" y="268" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="800">יום א' (08/11)</text>
+  <rect x="658" y="276" width="110" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="760" y="290" text-anchor="end" fill="#38bdf8" font-size="9.5" font-weight="700">מבני נתונים</text>
+  <text x="760" y="303" text-anchor="end" fill="#ffffff" font-size="10" font-weight="700">מפגש 02</text>
+  <text x="760" y="315" text-anchor="end" fill="#fcd34d" font-size="9" font-family="Consolas, monospace">🕒 16:45-18:45</text>
+
+  <rect x="514" y="252" width="126" height="76" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="577" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">יום ב' (09/11)</text>
+  <text x="577" y="298" text-anchor="middle" fill="#475569" font-size="10">אין אירועים</text>
+
+  <rect x="378" y="252" width="126" height="76" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="441" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">יום ג' (10/11)</text>
+  <rect x="386" y="276" width="110" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="488" y="290" text-anchor="end" fill="#c084fc" font-size="9.5" font-weight="700">הסתברות</text>
+  <text x="488" y="303" text-anchor="end" fill="#ffffff" font-size="10" font-weight="700">מפגש 02</text>
+  <text x="488" y="315" text-anchor="end" fill="#fcd34d" font-size="9" font-family="Consolas, monospace">🕒 18:00-20:30</text>
+
+  <rect x="242" y="252" width="126" height="76" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="305" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">יום ד' (11/11)</text>
+  <text x="305" y="298" text-anchor="middle" fill="#475569" font-size="10">אין אירועים</text>
+
+  <rect x="106" y="252" width="126" height="76" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="169" y="268" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="700">יום ה' (12/11)</text>
+  <rect x="114" y="276" width="110" height="44" rx="6" fill="#4c0519" stroke="#be123c"/>
+  <text x="216" y="290" text-anchor="end" fill="#c084fc" font-size="9.5" font-weight="700">הסתברות</text>
+  <text x="216" y="303" text-anchor="end" fill="#ffffff" font-size="10" font-weight="700">📝 ממ"ן 11</text>
+  <text x="216" y="315" text-anchor="end" fill="#fda4af" font-size="9">5 נקודות חובה</text>
+
+  <rect x="40" y="252" width="56" height="76" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="68" y="268" text-anchor="middle" fill="#cbd5e1" font-size="10.5" font-weight="700">ו'-ש'</text>
+  <text x="68" y="298" text-anchor="middle" fill="#475569" font-size="9.5">פנוי</text>
+
+  <!-- Row 4: Course Card Preview -->
+  <rect x="24" y="354" width="772" height="90" rx="14" fill="#1e293b" stroke="#334155"/>
+  <rect x="774" y="368" width="6" height="32" rx="3" fill="#38bdf8"/>
+  <text x="762" y="382" text-anchor="end" fill="#ffffff" font-size="13" font-weight="800">מבני נתונים ומבוא לאלגוריתמים (20407)</text>
+  <rect x="505" y="369" width="74" height="19" rx="6" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="542" y="382" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">בקצב הסמסטר</text>
+
+  <!-- Progress Bars inside Card -->
+  <text x="762" y="405" text-anchor="end" fill="#cbd5e1" font-size="10.5" font-weight="700">יחידות לימוד: 2/4 (50%)</text>
+  <rect x="505" y="411" width="257" height="6" rx="3" fill="#0f172a"/>
+  <rect x="633" y="411" width="129" height="6" rx="3" fill="#0ea5e9"/>
+
+  <text x="465" y="405" text-anchor="end" fill="#cbd5e1" font-size="10.5" font-weight="700">נקודות חובה: 12/18 נק'</text>
+  <rect x="210" y="411" width="255" height="6" rx="3" fill="#0f172a"/>
+  <rect x="295" y="411" width="170" height="6" rx="3" fill="#f59e0b"/>
+
+  <rect x="42" y="378" width="136" height="40" rx="10" fill="#0f172a" stroke="#475569"/>
+  <text x="110" y="402" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="800">⚡ פתח דף קורס</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 390" width="700" height="390" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Modal Outer Frame -->
+  <rect width="700" height="390" rx="18" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="672" y="36" text-anchor="end" fill="#ffffff" font-size="15" font-weight="800">📚 ניהול קורסים במערכת</text>
+  <text x="32" y="36" text-anchor="start" fill="#94a3b8" font-size="15">✕</text>
+  <line x1="24" y1="50" x2="676" y2="50" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Sub-header -->
+  <text x="672" y="72" text-anchor="end" fill="#cbd5e1" font-size="12.5" font-weight="700">הוספה / עריכת קורס בפורמט JSON</text>
+  <text x="32" y="72" text-anchor="start" fill="#94a3b8" font-size="11.5">חזרה לרשימה</text>
+
+  <!-- Community Repository Banner -->
+  <rect x="28" y="86" width="644" height="54" rx="12" fill="#312e81" fill-opacity="0.35" stroke="#6366f1" stroke-opacity="0.5"/>
+  <text x="654" y="108" text-anchor="end" fill="#c7d2fe" font-size="12.5" font-weight="800">מחפשים קורס שכבר הוזן?</text>
+  <text x="654" y="126" text-anchor="end" fill="#94a3b8" font-size="11">ניתן להוריד קובצי JSON מוכנים של קורסים מתוך מאגר הקהילה</text>
+  <rect x="42" y="98" width="132" height="30" rx="8" fill="#4f46e5"/>
+  <text x="108" y="117" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="700">↗ למאגר הקורסים</text>
+
+  <!-- Toolbar Above Textarea -->
+  <text x="672" y="166" text-anchor="end" fill="#94a3b8" font-size="11.5">קוד JSON של הקורס:</text>
+
+  <!-- Highlighted File Upload Button -->
+  <rect x="28" y="148" width="106" height="26" rx="7" fill="#10b981" fill-opacity="0.22" stroke="#34d399" stroke-width="1.5"/>
+  <text x="81" y="165" text-anchor="middle" fill="#6ee7b7" font-size="11.5" font-weight="800">📁 בחר קובץ</text>
+
+  <text x="148" y="165" text-anchor="start" fill="#38bdf8" font-size="11" font-weight="700" text-decoration="underline">העתק דוגמת JSON</text>
+
+  <!-- Callout Badge 1 -->
+  <rect x="260" y="148" width="218" height="25" rx="8" fill="#065f46" fill-opacity="0.55" stroke="#34d399"/>
+  <text x="369" y="164" text-anchor="middle" fill="#6ee7b7" font-size="11" font-weight="800">⬅️ 1. בחרו את קובץ ה-JSON שהורדתם</text>
+
+  <!-- JSON Textarea Box -->
+  <rect x="28" y="182" width="644" height="142" rx="10" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="48" y="206" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">{</text>
+  <text x="48" y="226" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">  "name": "מבני נתונים ומבוא לאלגוריתמים",</text>
+  <text x="48" y="246" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">  "code": "20407",</text>
+  <text x="48" y="266" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">  "instructor": "ד\"ר רונית כהן",</text>
+  <text x="48" y="286" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">  "units": [ ... ], "meetings": [ ... ], "assignments": [ ... ]</text>
+  <text x="48" y="306" fill="#34d399" font-size="11.5" font-family="Consolas, monospace">}</text>
+
+  <!-- Footer Buttons -->
+  <rect x="28" y="340" width="154" height="34" rx="9" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="105" y="361" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">שמור והחל שינויים</text>
+
+  <rect x="192" y="340" width="76" height="34" rx="9" fill="#1e293b" stroke="#334155"/>
+  <text x="230" y="361" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="700">ביטול</text>
+
+  <!-- Callout Badge 2 -->
+  <rect x="282" y="344" width="230" height="26" rx="8" fill="#0c4a6e" fill-opacity="0.7" stroke="#38bdf8"/>
+  <text x="397" y="361" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="800">⬅️ 2. לחצו לשמירה וטעינת הקורס לדאשבורד</text>
+</svg>
