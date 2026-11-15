@@ -1,0 +1,182 @@
+{
+  "id": "c_chem_lab_71073",
+  "name": "מעבדה בעקרונות הכימיה",
+  "emoji": "🥽",
+  "code": "71073",
+  "instructor": "לירן (כוכבי) עזרא",
+  "time": "מעבדה: ד' 11:15-14:00 (קבוצה ב')",
+  "color": "#0284c7",
+  "links": [
+    {
+      "id": "l1",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=2865",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "title": "מעבדה 1: בטיחות ועבודה במעבדה",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u2",
+      "title": "מעבדה 2: תרמוכימיה (חום תגובה)",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u3",
+      "title": "שבוע 8: הגשת ובדיקת דוחות מעבדה",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u4",
+      "title": "שבוע 9: חופשת חנוכה (אין מעבדות)",
+      "startWeek": 9,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u5",
+      "title": "מעבדה 3: גזים / ריכך מים",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u6",
+      "title": "מעבדה 4: ריכך מים / גזים",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u7",
+      "title": "מעבדה 5: ספקטרופוטומטריה / חומצה-בסיס",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u8",
+      "title": "מעבדה 6: חומצה-בסיס / ספקטרופוטומטריה",
+      "startWeek": 13,
+      "endWeek": 13,
+      "completed": false
+    },
+    {
+      "id": "u9",
+      "title": "שבוע 14: מעבדות השלמה",
+      "startWeek": 14,
+      "endWeek": 14,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m1",
+      "title": "מעבדה 1: בטיחות ועבודת מעבדה",
+      "date": "2026-11-18",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m2",
+      "title": "מעבדה 2: תרמוכימיה (חום תגובה)",
+      "date": "2026-11-25",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m3",
+      "title": "מעבדה 3: גזים / ריכך מים",
+      "date": "2026-12-16",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m4",
+      "title": "מעבדה 4: ריכך מים / גזים",
+      "date": "2026-12-23",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m5",
+      "title": "מעבדה 5: ספקטרופוטומטריה / חומצה-בסיס",
+      "date": "2026-12-30",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m6",
+      "title": "מעבדה 6: חומצה-בסיס / ספקטרופוטומטריה",
+      "date": "2027-01-06",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a1",
+      "title": "דו\"ח מעבדה 1: בטיחות",
+      "date": "2026-11-25",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a2",
+      "title": "דו\"ח מעבדה 2: תרמוכימיה",
+      "date": "2026-12-02",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a3",
+      "title": "דו\"ח מעבדה 3: גזים / ריכך מים",
+      "date": "2026-12-23",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a4",
+      "title": "דו\"ח מעבדה 4: ריכך מים / גזים",
+      "date": "2026-12-30",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a5",
+      "title": "דו\"ח מעבדה 5: ספקטרופוטומטריה / חומצה-בסיס",
+      "date": "2027-01-06",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a6",
+      "title": "דו\"ח מעבדה 6: חומצה-בסיס / ספקטרופוטומטריה",
+      "date": "2027-01-13",
+      "time": "11:15",
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "id": "c_phys",
+  "name": "פיסיקה למדעי החקלאות והתזונה",
+  "emoji": "⚛️",
+  "code": "71061",
+  "instructor": "ד\"ר איתי בר-אלי",
+  "time": "הרצאה: א' 11:15-13:00 | תרגול: ה' 13:15-14:00",
+  "color": "#d97706",
+  "links": [
+    {
+      "id": "l3",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=5023",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u20",
+      "title": "מבוא מתמטי",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u21",
+      "title": "קינמטיקה (חד ממדית ודו ממדית)",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u22",
+      "title": "חוקי ניוטון (דינמיקה)",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u23",
+      "title": "תנועה מעגלית אופקית",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u24",
+      "title": "עבודה ואנרגיה",
+      "startWeek": 5,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u25",
+      "title": "תנועה מעגלית אנכית",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u26",
+      "title": "הידרוסטטיקה",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u27",
+      "title": "הידרודינמיקה",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "mc3_l1",
+      "title": "הרצאה 1: מבוא מתמטי ווקטורים",
+      "date": "2026-10-25",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t1",
+      "title": "תרגול 1: מבוא מתמטי ווקטורים",
+      "date": "2026-10-29",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l2",
+      "title": "הרצאה 2: קינמטיקה חד ודו ממדית",
+      "date": "2026-11-01",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t2",
+      "title": "תרגול 2: קינמטיקה חד ודו ממדית",
+      "date": "2026-11-05",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l3",
+      "title": "הרצאה 3: חוקי ניוטון ודינמיקה",
+      "date": "2026-11-08",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t3",
+      "title": "תרגול 3: חוקי ניוטון ודינמיקה",
+      "date": "2026-11-12",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l4",
+      "title": "הרצאה 4: תנועה מעגלית אופקית",
+      "date": "2026-11-15",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t4",
+      "title": "תרגול 4: תנועה מעגלית אופקית",
+      "date": "2026-11-19",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l5",
+      "title": "הרצאה 5: עבודה ואנרגיה",
+      "date": "2026-11-22",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t5",
+      "title": "תרגול 5: עבודה ואנרגיה",
+      "date": "2026-11-26",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l6",
+      "title": "הרצאה 6: תנועה מעגלית אנכית",
+      "date": "2026-11-29",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t6",
+      "title": "תרגול 6: תנועה מעגלית אנכית",
+      "date": "2026-12-03",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l7",
+      "title": "הרצאה 7: חזרה ותרגול",
+      "date": "2026-12-06",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t7",
+      "title": "תרגול 7: חזרה ותרגול",
+      "date": "2026-12-10",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l8",
+      "title": "הרצאה 8: הידרוסטטיקה",
+      "date": "2026-12-13",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t8",
+      "title": "תרגול 8: הידרוסטטיקה",
+      "date": "2026-12-17",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l9",
+      "title": "הרצאה 9: הידרודינמיקה",
+      "date": "2026-12-20",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t9",
+      "title": "תרגול 9: הידרודינמיקה",
+      "date": "2026-12-24",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l10",
+      "title": "הרצאה 10: גלים ותנודות",
+      "date": "2026-12-27",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t10",
+      "title": "תרגול 10: גלים ותנודות",
+      "date": "2026-12-31",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l11",
+      "title": "הרצאה 11: חשמל ומעגלים",
+      "date": "2027-01-03",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t11",
+      "title": "תרגול 11: חשמל ומעגלים",
+      "date": "2027-01-07",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l12",
+      "title": "הרצאה 12: אופטיקה",
+      "date": "2027-01-10",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t12",
+      "title": "תרגול 12: אופטיקה",
+      "date": "2027-01-14",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc3_l13",
+      "title": "הרצאה 13: חזרה למבחן",
+      "date": "2027-01-17",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc3_t13",
+      "title": "תרגול 13: חזרה למבחן",
+      "date": "2027-01-21",
+      "time": "13:15",
+      "type": "tutorial",
+      "completed": false
+    }
+  ],
+  "assignments": []
+}

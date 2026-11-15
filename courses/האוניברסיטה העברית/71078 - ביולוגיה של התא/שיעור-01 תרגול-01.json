@@ -1,0 +1,441 @@
+{
+  "id": "c_bio",
+  "name": "ביולוגיה של התא",
+  "emoji": "🧬",
+  "code": "71078",
+  "instructor": "פרופ' אסף מוסקונה, פרופ' מנחם מושליון",
+  "time": "הרצאה: ה' 09:15-11:00 | תרגול: ה' 08:15-09:00",
+  "color": "#db2777",
+  "links": [
+    {
+      "id": "l1",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=423",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "title": "מים, חיים ותא - מושגי יסוד",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u2",
+      "title": "מבוא לסוכרים",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u3",
+      "title": "חלבונים א': מבנה ותכונות",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u4",
+      "title": "חלבונים ב': אנזימים והשלד התוך-תאי",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u5",
+      "title": "חומצות גרעין והכפלת ה-DNA",
+      "startWeek": 5,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u6",
+      "title": "מ-DNA לחלבון: שעתוק ותרגום",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u_signal",
+      "title": "לימוד עצמי: הולכת אותות",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u7",
+      "title": "ליפידים וקרום התא",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u8",
+      "title": "מערכת הממברנות התוך תאיות",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u9",
+      "title": "גופיפי גולג'י, חלליות וליזוזומים",
+      "startWeek": 9,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u10",
+      "title": "מבנה המיטוכונדריון ותפקידו בנשימה תאית",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u11",
+      "title": "פוטוסינתזה: כלורופלסט, פיגמנטים וריאקציות",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u12",
+      "title": "מחזור התא: כרומוזומים, מיטוזה ומיוזה",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u13",
+      "title": "דופן התא ומשק המים",
+      "startWeek": 13,
+      "endWeek": 13,
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "ab1",
+      "title": "שאלון מסכם 1: מים, חיים, תא",
+      "date": "2026-10-22",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab2",
+      "title": "שאלון מסכם 2: מבוא לסוכרים",
+      "date": "2026-10-22",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab3",
+      "title": "שאלון מסכם 3: חלבונים א'",
+      "date": "2026-10-29",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab4",
+      "title": "שאלון מסכם 4: חלבונים ב'",
+      "date": "2026-11-05",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab5",
+      "title": "שאלון מסכם 5: חומצות גרעין ו-DNA",
+      "date": "2026-11-12",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab6",
+      "title": "שאלון מסכם 6: שעתוק ותרגום",
+      "date": "2026-11-19",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab7",
+      "title": "שאלון מסכם 7: ליפידים וקרום התא",
+      "date": "2026-11-26",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab8",
+      "title": "שאלון מסכם 8: ממברנות תוך תאיות",
+      "date": "2026-12-03",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab9",
+      "title": "שאלון מסכם 9: גולג'י, חלליות וליזוזומים",
+      "date": "2026-12-10",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab10",
+      "title": "שאלון מסכם 10: מיטוכונדריון ונשימה תאית",
+      "date": "2026-12-17",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab11",
+      "title": "שאלון מסכם 11: פוטוסינתזה",
+      "date": "2026-12-24",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab12",
+      "title": "שאלון מסכם 12: מחזור התא",
+      "date": "2026-12-31",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab13",
+      "title": "שאלון מסכם 13: דופן התא ומשק המים",
+      "date": "2027-01-07",
+      "time": "08:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "ab_self_signal",
+      "title": "לימוד עצמי: הולכת אותות",
+      "date": "2027-01-21",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    }
+  ],
+  "meetings": [
+    {
+      "id": "mc2_t1",
+      "title": "תרגול 1: מים, חיים, תא",
+      "date": "2026-10-15",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l1",
+      "title": "הרצאה 1: מים, חיים, תא",
+      "date": "2026-10-15",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t2",
+      "title": "תרגול 2: מבוא לסוכרים",
+      "date": "2026-10-22",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l2",
+      "title": "הרצאה 2: מבוא לסוכרים",
+      "date": "2026-10-22",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t3",
+      "title": "תרגול 3: חלבונים א'",
+      "date": "2026-10-29",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l3",
+      "title": "הרצאה 3: חלבונים א'",
+      "date": "2026-10-29",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t4",
+      "title": "תרגול 4: חלבונים ב'",
+      "date": "2026-11-05",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l4",
+      "title": "הרצאה 4: חלבונים ב'",
+      "date": "2026-11-05",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t5",
+      "title": "תרגול 5: חומצות גרעין ו-DNA",
+      "date": "2026-11-12",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l5",
+      "title": "הרצאה 5: חומצות גרעין ו-DNA",
+      "date": "2026-11-12",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t6",
+      "title": "תרגול 6: שעתוק ותרגום",
+      "date": "2026-11-19",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l6",
+      "title": "הרצאה 6: שעתוק ותרגום",
+      "date": "2026-11-19",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t7",
+      "title": "תרגול 7: ליפידים וקרום התא",
+      "date": "2026-11-26",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l7",
+      "title": "הרצאה 7: ליפידים וקרום התא",
+      "date": "2026-11-26",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t8",
+      "title": "תרגול 8: ממברנות תוך תאיות",
+      "date": "2026-12-03",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l8",
+      "title": "הרצאה 8: ממברנות תוך תאיות",
+      "date": "2026-12-03",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t9",
+      "title": "תרגול 9: גופיפי גולג'י, חלליות וליזוזומים",
+      "date": "2026-12-10",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l9",
+      "title": "הרצאה 9: גופיפי גולג'י, חלליות וליזוזומים",
+      "date": "2026-12-10",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t10",
+      "title": "תרגול 10: מיטוכונדריון ונשימה תאית",
+      "date": "2026-12-17",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l10",
+      "title": "הרצאה 10: מיטוכונדריון ונשימה תאית",
+      "date": "2026-12-17",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t11",
+      "title": "תרגול 11: פוטוסינתזה",
+      "date": "2026-12-24",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l11",
+      "title": "הרצאה 11: פוטוסינתזה",
+      "date": "2026-12-24",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t12",
+      "title": "תרגול 12: מחזור התא וחלוקה",
+      "date": "2026-12-31",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l12",
+      "title": "הרצאה 12: מחזור התא וחלוקה",
+      "date": "2026-12-31",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "mc2_t13",
+      "title": "תרגול 13: דופן התא ומשק המים",
+      "date": "2027-01-07",
+      "time": "08:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "mc2_l13",
+      "title": "הרצאה 13: דופן התא ומשק המים",
+      "date": "2027-01-07",
+      "time": "09:15",
+      "type": "lecture",
+      "completed": false
+    }
+  ]
+}

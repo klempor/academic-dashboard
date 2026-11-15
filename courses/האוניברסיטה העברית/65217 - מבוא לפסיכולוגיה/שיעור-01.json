@@ -1,0 +1,243 @@
+{
+  "id": "c_psych_65217",
+  "name": "מבוא לפסיכולוגיה",
+  "emoji": "🧠",
+  "code": "65217",
+  "instructor": "ד\"ר שירלי הרשקו",
+  "time": "הרצאה: ד' 16:15-19:00",
+  "color": "#c026d3",
+  "links": [
+    {
+      "id": "l1",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=3009",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "title": "נושא 1: מהי פסיכולוגיה (פרק 1)",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u2",
+      "title": "נושא 2: מחקר בפסיכולוגיה (פרק 2)",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u3",
+      "title": "נושא 3: תפיסה וחישה (פרק 4)",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u4",
+      "title": "נושא 4: מודע ותת מודע (פרק 5)",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u5",
+      "title": "נושא 5: למידה (פרק 6)",
+      "startWeek": 5,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u6",
+      "title": "נושא 6: זיכרון (פרק 7)",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u7",
+      "title": "נושא 7: קוגניציה וקבלת החלטות (פרק 8)",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u8",
+      "title": "נושא 8: אינטליגנציה (פרק 9)",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u9",
+      "title": "נושא 9: מוטיבציה (פרק 11)",
+      "startWeek": 9,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u10",
+      "title": "נושא 10: אישיות והתפתחות",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u11",
+      "title": "נושא 11: פסיכולוגיה חברתית",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u12",
+      "title": "נושא 12: פסיכופתולוגיה וטיפול",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m1",
+      "title": "הרצאה 1: מהי פסיכולוגיה (פרק 1)",
+      "date": "2026-10-14",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m2",
+      "title": "הרצאה 2: מחקר בפסיכולוגיה (פרק 2)",
+      "date": "2026-10-21",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m3",
+      "title": "הרצאה 3: תפיסה וחישה (פרק 4)",
+      "date": "2026-10-28",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m4",
+      "title": "הרצאה 4: מודע ותת מודע (פרק 5)",
+      "date": "2026-11-04",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m5",
+      "title": "הרצאה 5: למידה (פרק 6)",
+      "date": "2026-11-11",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m6",
+      "title": "הרצאה 6: זיכרון (פרק 7)",
+      "date": "2026-11-18",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m7",
+      "title": "הרצאה 7: קוגניציה וקבלת החלטות (פרק 8)",
+      "date": "2026-11-25",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m8",
+      "title": "הרצאה 8: אינטליגנציה (פרק 9)",
+      "date": "2026-12-02",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m9",
+      "title": "הרצאה 9: מוטיבציה (פרק 11)",
+      "date": "2026-12-09",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m10",
+      "title": "הרצאה 10: אישיות והתפתחות",
+      "date": "2026-12-16",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m11",
+      "title": "הרצאה 11: פסיכולוגיה חברתית",
+      "date": "2026-12-23",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m12",
+      "title": "הרצאה 12: פסיכופתולוגיה וטיפול",
+      "date": "2026-12-30",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m13",
+      "title": "הרצאה 13: חזרה וסיכום הקורס",
+      "date": "2027-01-06",
+      "time": "16:15",
+      "type": "lecture",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "q1",
+      "title": "בוחן אמצע 1 (חובה)",
+      "date": "2026-11-18",
+      "time": "16:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "q2",
+      "title": "בוחן אמצע 2 (חובה)",
+      "date": "2026-12-23",
+      "time": "16:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "q3",
+      "title": "בוחן אמצע 3 (חובה)",
+      "date": "2027-01-13",
+      "time": "16:15",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_group",
+      "title": "מצגת הרצאה קבוצתית (העשרה בכיתה)",
+      "date": "2026-12-23",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

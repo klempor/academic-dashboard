@@ -1,0 +1,410 @@
+{
+  "id": "c_calc_71054",
+  "name": "חדו\"א א' (תזונה)",
+  "emoji": "📐",
+  "code": "71054",
+  "instructor": "יניב דביר, מיכל שפירטידה",
+  "time": "הרצאה: ה' 11:15-13:00 | תרגול: ה' 14:15-15:00",
+  "color": "#059669",
+  "links": [
+    {
+      "id": "l1",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=2861",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "title": "מספרים ממשיים: קבוצות וקטעים",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u2",
+      "title": "פונקציות: תחום, טווח, תמונה, חח\"ע ועל",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u3",
+      "title": "פונקציות מיוחדות ופונקציות מפוצלות",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u4",
+      "title": "פעולות בין פונקציות והרכבת פונקציות",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u5",
+      "title": "גבולות ורציפות, גבולות חד-צדדיים",
+      "startWeek": 5,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u6",
+      "title": "משפט בולצנו ושימושיו",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u7",
+      "title": "נגזרות, ישר משיק וקירוב לינארי",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u8",
+      "title": "כלל השרשרת וקשר בין רציפות לגזירות",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u9",
+      "title": "כלל לופיטל וחישוב גבולות מתקדמים",
+      "startWeek": 9,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u10",
+      "title": "חקירת פונקציות: מונוטוניות ונקודות קיצון",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u11",
+      "title": "קמירות, נקודות פיתול ואסימפטוטות",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    },
+    {
+      "id": "u12",
+      "title": "פונקציות מעריכיות ותכונותיהן",
+      "startWeek": 12,
+      "endWeek": 12,
+      "completed": false
+    },
+    {
+      "id": "u13",
+      "title": "הפונקציה הלוגריתמית ותכונותיה",
+      "startWeek": 13,
+      "endWeek": 13,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m1_l",
+      "title": "הרצאה 1: מספרים ממשיים: קבוצות וקטעים",
+      "date": "2026-10-15",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m1_t",
+      "title": "תרגול 1: מספרים ממשיים: קבוצות וקטעים",
+      "date": "2026-10-15",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m2_l",
+      "title": "הרצאה 2: פונקציות: תחום, טווח, תמונה, חח\"ע ועל",
+      "date": "2026-10-22",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m2_t",
+      "title": "תרגול 2: פונקציות: תחום, טווח, תמונה, חח\"ע ועל",
+      "date": "2026-10-22",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m3_l",
+      "title": "הרצאה 3: פונקציות מיוחדות ופונקציות מפוצלות",
+      "date": "2026-10-29",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m3_t",
+      "title": "תרגול 3: פונקציות מיוחדות ופונקציות מפוצלות",
+      "date": "2026-10-29",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m4_l",
+      "title": "הרצאה 4: פעולות בין פונקציות והרכבת פונקציות",
+      "date": "2026-11-05",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m4_t",
+      "title": "תרגול 4: פעולות בין פונקציות והרכבת פונקציות",
+      "date": "2026-11-05",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m5_l",
+      "title": "הרצאה 5: גבולות ורציפות, גבולות חד-צדדיים",
+      "date": "2026-11-12",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m5_t",
+      "title": "תרגול 5: גבולות ורציפות, גבולות חד-צדדיים",
+      "date": "2026-11-12",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m6_l",
+      "title": "הרצאה 6: משפט בולצנו ושימושיו",
+      "date": "2026-11-19",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m6_t",
+      "title": "תרגול 6: משפט בולצנו ושימושיו",
+      "date": "2026-11-19",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m7_l",
+      "title": "הרצאה 7: נגזרות, ישר משיק וקירוב לינארי",
+      "date": "2026-11-26",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m7_t",
+      "title": "תרגול 7: נגזרות, ישר משיק וקירוב לינארי",
+      "date": "2026-11-26",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m8_l",
+      "title": "הרצאה 8: כלל השרשרת וקשר בין רציפות לגזירות",
+      "date": "2026-12-03",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m8_t",
+      "title": "תרגול 8: כלל השרשרת וקשר בין רציפות לגזירות",
+      "date": "2026-12-03",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m9_l",
+      "title": "הרצאה 9: כלל לופיטל וחישוב גבולות מתקדמים",
+      "date": "2026-12-10",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m9_t",
+      "title": "תרגול 9: כלל לופיטל וחישוב גבולות מתקדמים",
+      "date": "2026-12-10",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m10_l",
+      "title": "הרצאה 10: חקירת פונקציות: מונוטוניות ונקודות קיצון",
+      "date": "2026-12-17",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m10_t",
+      "title": "תרגול 10: חקירת פונקציות: מונוטוניות ונקודות קיצון",
+      "date": "2026-12-17",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m11_l",
+      "title": "הרצאה 11: קמירות, נקודות פיתול ואסימפטוטות",
+      "date": "2026-12-24",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m11_t",
+      "title": "תרגול 11: קמירות, נקודות פיתול ואסימפטוטות",
+      "date": "2026-12-24",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m12_l",
+      "title": "הרצאה 12: פונקציות מעריכיות ותכונותיהן",
+      "date": "2026-12-31",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m12_t",
+      "title": "תרגול 12: פונקציות מעריכיות ותכונותיהן",
+      "date": "2026-12-31",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m13_l",
+      "title": "הרצאה 13: הפונקציה הלוגריתמית ותכונותיה",
+      "date": "2027-01-07",
+      "time": "11:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m13_t",
+      "title": "תרגול 13: הפונקציה הלוגריתמית ותכונותיה",
+      "date": "2027-01-07",
+      "time": "14:15",
+      "type": "tutorial",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a1",
+      "title": "תרגיל בית 1: קבוצות ופונקציות",
+      "date": "2026-10-26",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a2",
+      "title": "תרגיל בית 2: תחום, טווח והרכבה",
+      "date": "2026-11-02",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a3",
+      "title": "תרגיל בית 3: פונקציות מפוצלות",
+      "date": "2026-11-09",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a4",
+      "title": "תרגיל בית 4: גבולות ורציפות",
+      "date": "2026-11-16",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a5",
+      "title": "תרגיל בית 5: משפט בולצנו",
+      "date": "2026-11-23",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a6",
+      "title": "תרגיל בית 6: נגזרות וקירוב לינארי",
+      "date": "2026-11-30",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a7",
+      "title": "תרגיל בית 7: כלל השרשרת",
+      "date": "2026-12-07",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a8",
+      "title": "תרגיל בית 8: כלל לופיטל",
+      "date": "2026-12-14",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a9",
+      "title": "תרגיל בית 9: חקירת פונקציות וקיצון",
+      "date": "2026-12-21",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a10",
+      "title": "תרגיל בית 10: קמירות ואסימפטוטות",
+      "date": "2026-12-28",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a11",
+      "title": "תרגיל בית 11: מעריכית ולוגריתמית",
+      "date": "2027-01-11",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    }
+  ]
+}

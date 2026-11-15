@@ -1,0 +1,459 @@
+{
+  "id": "c_chem_71074",
+  "name": "עקרונות הכימיה",
+  "emoji": "🧪",
+  "code": "71074",
+  "instructor": "ד\"ר מרב סטי",
+  "time": "הרצאה: א' 13:15-15:00, ד' 08:15-11:00 | תרגול: ג' 11:15-13:00",
+  "color": "#0ea5e9",
+  "links": [
+    {
+      "id": "l1",
+      "title": "אתר הקורס",
+      "url": "https://moodle.huji.ac.il/2026-27/course/view.php?id=3688",
+      "icon": "fa-globe"
+    }
+  ],
+  "units": [
+    {
+      "id": "u1",
+      "title": "מושגי יסוד, סטויכיומטריה ומשוואות כימיות",
+      "startWeek": 1,
+      "endWeek": 1,
+      "completed": false
+    },
+    {
+      "id": "u2",
+      "title": "תורת הגזים האידיאליים והתיאוריה הקינטית",
+      "startWeek": 2,
+      "endWeek": 2,
+      "completed": false
+    },
+    {
+      "id": "u3",
+      "title": "תרמודינמיקה א': תרמוכימיה, אנטלפיה וחוק הס",
+      "startWeek": 3,
+      "endWeek": 3,
+      "completed": false
+    },
+    {
+      "id": "u4",
+      "title": "תרמודינמיקה ב': אנטרופיה ואנרגיה חופשית של גיבס",
+      "startWeek": 4,
+      "endWeek": 4,
+      "completed": false
+    },
+    {
+      "id": "u5",
+      "title": "שיווי משקל כימי, קבוע Keq ועקרון לה-שטלייה",
+      "startWeek": 5,
+      "endWeek": 5,
+      "completed": false
+    },
+    {
+      "id": "u6",
+      "title": "תורת הקוונטים, אורביטלים ותכונות מחזוריות",
+      "startWeek": 6,
+      "endWeek": 6,
+      "completed": false
+    },
+    {
+      "id": "u7",
+      "title": "קשרים כימיים: יוני, קוולנטי, מבני לואיס ו-VSEPR",
+      "startWeek": 7,
+      "endWeek": 7,
+      "completed": false
+    },
+    {
+      "id": "u8",
+      "title": "כוחות בין-מולקולריים ומעברי פאזה",
+      "startWeek": 8,
+      "endWeek": 8,
+      "completed": false
+    },
+    {
+      "id": "u9",
+      "title": "תמיסות ותכונות קוליגטיביות",
+      "startWeek": 9,
+      "endWeek": 9,
+      "completed": false
+    },
+    {
+      "id": "u10",
+      "title": "חומצות, בסיסים, הידרוליזה ותמיסות בופר",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u_self_solubility",
+      "title": "לימוד עצמי: שיווי משקל בתמיסות מלחים קשי תמס",
+      "startWeek": 10,
+      "endWeek": 10,
+      "completed": false
+    },
+    {
+      "id": "u11",
+      "title": "חמצון-חיזור, דרגות חמצון ותאים אלקטרוכימיים",
+      "startWeek": 11,
+      "endWeek": 11,
+      "completed": false
+    }
+  ],
+  "meetings": [
+    {
+      "id": "m1_l1",
+      "title": "הרצאה 1.1: מושגי יסוד וסטויכיומטריה",
+      "date": "2026-10-11",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m1_t",
+      "title": "תרגול 1: מושגי יסוד וסטויכיומטריה",
+      "date": "2026-10-13",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m1_l2",
+      "title": "הרצאה 1.2: מושגי יסוד וסטויכיומטריה",
+      "date": "2026-10-14",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m2_l1",
+      "title": "הרצאה 2.1: תורת הגזים האידיאליים",
+      "date": "2026-10-18",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m2_t",
+      "title": "תרגול 2: תורת הגזים האידיאליים",
+      "date": "2026-10-20",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m2_l2",
+      "title": "הרצאה 2.2: תורת הגזים האידיאליים",
+      "date": "2026-10-21",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m3_l1",
+      "title": "הרצאה 3.1: תרמודינמיקה א': תרמוכימיה ואנטלפיה",
+      "date": "2026-10-25",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m3_t",
+      "title": "תרגול 3: תרמודינמיקה א': תרמוכימיה ואנטלפיה",
+      "date": "2026-10-27",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m3_l2",
+      "title": "הרצאה 3.2: תרמודינמיקה א': תרמוכימיה ואנטלפיה",
+      "date": "2026-10-28",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m4_l1",
+      "title": "הרצאה 4.1: תרמודינמיקה ב': אנטרופיה וגיבס",
+      "date": "2026-11-01",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m4_t",
+      "title": "תרגול 4: תרמודינמיקה ב': אנטרופיה וגיבס",
+      "date": "2026-11-03",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m4_l2",
+      "title": "הרצאה 4.2: תרמודינמיקה ב': אנטרופיה וגיבס",
+      "date": "2026-11-04",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m5_l1",
+      "title": "הרצאה 5.1: שיווי משקל כימי",
+      "date": "2026-11-08",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m5_t",
+      "title": "תרגול 5: שיווי משקל כימי",
+      "date": "2026-11-10",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m5_l2",
+      "title": "הרצאה 5.2: שיווי משקל כימי",
+      "date": "2026-11-11",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m6_l1",
+      "title": "הרצאה 6.1: תורת הקוונטים ומבנה האטום",
+      "date": "2026-11-15",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m6_t",
+      "title": "תרגול 6: תורת הקוונטים ומבנה האטום",
+      "date": "2026-11-17",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m6_l2",
+      "title": "הרצאה 6.2: תורת הקוונטים ומבנה האטום",
+      "date": "2026-11-18",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m7_l1",
+      "title": "הרצאה 7.1: הקשר הכימי ושיטת VSEPR",
+      "date": "2026-11-22",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m7_t",
+      "title": "תרגול 7: הקשר הכימי ושיטת VSEPR",
+      "date": "2026-11-24",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m7_l2",
+      "title": "הרצאה 7.2: הקשר הכימי ושיטת VSEPR",
+      "date": "2026-11-25",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m8_l1",
+      "title": "הרצאה 8.1: כוחות בין-מולקולריים ומעברי פאזה",
+      "date": "2026-11-29",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m8_t",
+      "title": "תרגול 8: כוחות בין-מולקולריים ומעברי פאזה",
+      "date": "2026-12-01",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m8_l2",
+      "title": "הרצאה 8.2: כוחות בין-מולקולריים ומעברי פאזה",
+      "date": "2026-12-02",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m9_l1",
+      "title": "הרצאה 9.1: תמיסות ותכונות קוליגטיביות",
+      "date": "2026-12-06",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m9_t",
+      "title": "תרגול 9: תמיסות ותכונות קוליגטיביות",
+      "date": "2026-12-08",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m9_l2",
+      "title": "הרצאה 9.2: תמיסות ותכונות קוליגטיביות",
+      "date": "2026-12-09",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m10_l1",
+      "title": "הרצאה 10.1: חומצות, בסיסים ובופרים",
+      "date": "2026-12-13",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m10_t",
+      "title": "תרגול 10: חומצות, בסיסים ובופרים",
+      "date": "2026-12-15",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m10_l2",
+      "title": "הרצאה 10.2: חומצות, בסיסים ובופרים",
+      "date": "2026-12-16",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m11_l1",
+      "title": "הרצאה 11.1: חמצון-חיזור ואלקטרוכימיה",
+      "date": "2026-12-20",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m11_t",
+      "title": "תרגול 11: חמצון-חיזור ואלקטרוכימיה",
+      "date": "2026-12-22",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m11_l2",
+      "title": "הרצאה 11.2: חמצון-חיזור ואלקטרוכימיה",
+      "date": "2026-12-23",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m12_l1",
+      "title": "הרצאה 12.1: חזרה ותרגול מודלים מתקדמים",
+      "date": "2026-12-27",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m12_t",
+      "title": "תרגול 12: חזרה ותרגול מודלים מתקדמים",
+      "date": "2026-12-29",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m12_l2",
+      "title": "הרצאה 12.2: חזרה ותרגול מודלים מתקדמים",
+      "date": "2026-12-30",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m13_l1",
+      "title": "הרצאה 13.1: סיכום הקורס והכנה לבחינה",
+      "date": "2027-01-03",
+      "time": "13:15",
+      "type": "lecture",
+      "completed": false
+    },
+    {
+      "id": "m13_t",
+      "title": "תרגול 13: סיכום הקורס והכנה לבחינה",
+      "date": "2027-01-05",
+      "time": "11:15",
+      "type": "tutorial",
+      "completed": false
+    },
+    {
+      "id": "m13_l2",
+      "title": "הרצאה 13.2: סיכום הקורס והכנה לבחינה",
+      "date": "2027-01-06",
+      "time": "08:15",
+      "type": "lecture",
+      "completed": false
+    }
+  ],
+  "assignments": [
+    {
+      "id": "a_units1",
+      "title": "דף תרגיל חובה 1: המרת יחידות",
+      "date": "2026-10-22",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_units2",
+      "title": "דף תרגיל חובה 2: המרת יחידות",
+      "date": "2026-11-05",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_midterm",
+      "title": "בוחן אמצע (רשות - 30% מגן)",
+      "date": "2026-11-27",
+      "time": "09:00",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_units3",
+      "title": "דף תרגיל חובה 3: המרת יחידות",
+      "date": "2026-11-26",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    },
+    {
+      "id": "a_self",
+      "title": "מטלת לימוד עצמי: מלחים קשי תמס",
+      "date": "2026-12-31",
+      "time": "23:59",
+      "completed": false,
+      "grade": null
+    }
+  ]
+}
